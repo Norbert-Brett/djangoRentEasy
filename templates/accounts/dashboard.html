@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %} | User Dashboard {% endblock %}
+
+{% block content %}
+    <section class="py-5">
+        <div class="container mx-auto">
+            <div class="text-center">
+                <div class="">
+                    <h1 class="">User Dashboard</h1>
+                    <p class="">Manage your RentEasy account</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Breadcrumb -->
+    <div class="text-sm breadcrumbs my-4">
+        <ul>
+            <li><a href="{% url 'index' %}"><i class="fas fa-home mr-2"></i> Home</a></li>
+            <li><a href="{% url 'dashboard' %}" class="text-blue-600">Dashboard</a></li>
+        </ul>
+    </div>
+
+    <!-- Alerts -->
+    {% include 'partials/_alerts.html' %}
+
+    <section  class="py-4">
+        <div class="container h-screen">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Welcome {{ user.first_name }}</h2>
+                    {% if contacts %}
+                        <p>Here are the property listings that you have inquired about</p>
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                            <thead>
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-start whitespace-nowrap"><span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">#</span></th>
+                                <th scope="col" class="px-6 py-3 text-start whitespace-nowrap min-w-64"><span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">Property</span></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                            {% for contact in contacts %}
+                                <tr>
+                                    <td class="size-px whitespace-nowrap px-6 py-3">{{ contact.id }}</td>
+                                    <td class="size-px whitespace-nowrap px-6 py-3">{{ contact.listing }}</td>
+                                    <td class="size-px whitespace-nowrap px-6 py-3">
+                                        <a class="btn btn-secondary" href="{% url 'listing' contact.listing_id %}">View
+                                            Listing</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>You have not made any inquiries</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %} | {{ listing.title }} {% endblock %}
+
+{% block content %}
+    <section class="py-5">
+        <div class="container mx-auto">
+            <div class=" text-center">
+                <div class="grid md:grid-col-2">
+                    <h1 class="display-4">{{ listing.title }}</h1>
+                    <p class="lead">
+                        <i class="fas fa-map-marker"></i> {{ listing.city }} , {{ listing.country }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="text-sm breadcrumbs my-4">
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'listings' %}">Listings</a></li>
+            <li>{{ listing.title }}</li>
+        </ul>
+    </div>
+
+    <!-- Alerts -->
+    {% include 'partials/_alerts.html' %}
+
+    <!-- Listing -->
+    <div class=" overflow-hidden sm:rounded-lg p-6">
+        <div class="flex items-center justify-between">
+            <a href="{% url 'listings' %}" class="btn btn-secondary my-2">Back To Listings</a>
+        </div>
+        <div class="grid md:grid-cols-6 gap-4 mx-auto">
+            <div class="col-span-4">
+                <img src="{{ listing.photo_main.url }}" alt="" class="w-full h-auto object-cover mb-3">
+                <div class="grid grid-cols-2 gap-4 mb-5">
+                    {% if listing.photo_1 %}
+                        <div>
+                            <a href="{{ listing.photo_1.url }}" data-lightbox="home-images">
+                                <img src="{{ listing.photo_1.url }}" alt="" class="w-full h-32 object-cover">
+                            </a>
+                        </div>
+                    {% endif %}
+                    <!-- Repeat for other photos -->
+                </div>
+                <!-- Fields -->
+                <div class="grid grid-cols-2 gap-4 my-6">
+                    <div>
+                        <ul class="list-none">
+                            <li class="text-gray-500">
+                                <i class="fas fa-money-bill-alt"></i> Price per night:
+                                <span class="float-right">£ {{ listing.price | intcomma }}</span>
+                            </li>
+                            <li class="text-gray-500">
+                                <i class="fas fa-bed"></i> Bedrooms:
+                                <span class="float-right">{{ listing.bedrooms }}</span>
+                            </li>
+                            <li class="text-gray-500">
+                                <i class="fas fa-bath"></i> Bathrooms:
+                                <span class="float-right">{{ listing.bathrooms }}</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- Description -->
+                <div class="mb-5">
+                    {{ listing.description }}
+                </div>
+            </div>
+            <div class="grid place-content-center">
+                <div class="card mx-auto shadow-lg rounded-md">
+                    <img class="rounded-md" src="{{ listing.host.photo.url }}" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Your Host</h5>
+                        <h6 class="text-gray-500">{{ listing.host }}</h6>
+                        <p class="card-text">{{ listing.host.description }}</p>
+                    </div>
+                    <div class="card-actions">
+                        <!-- Open the modal using ID.showModal() method -->
+                        <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+                        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+                            <div class="modal-box">
+                                <h3 class="font-bold text-lg">Hello!</h3>
+                                <p class="py-4">Press ESC key or click the button below to close</p>
+                                <div class="modal-action">
+                                    <form action="{% url 'contact' %}" method="POST">
+                                        {% csrf_token %}
+                        {% if user.is_authenticated %}
+                            <input type="hidden" name="user_id" value="{{ user.id }}">
+                        {% else %}
+                            <input type="hidden" name="user_id" value="0">
+                        {% endif %}
+                                        <input type="hidden" name="realtor_email" value="{{ listing.host.email }}">
+                        <input type="hidden" name="listing_id" value="{{ listing.id }}">
+                                    <div class="form-group">
+                            <label for="property_name" class="col-form-label">Property:</label>
+                            <input type="text" name="listing" class="form-control" value="{{ listing.title }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" name="name" class="form-control" {% if user.is_authenticated %}
+                                   value="{{ user.first_name }} {{ user.last_name }}" {% endif %} required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-form-label">Email:</label>
+                            <input type="email" name="email" class="form-control" {% if user.is_authenticated %}
+                                   value="{{ user.email }}" {% endif %} required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-form-label">Phone:</label>
+                            <input type="text" name="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="col-form-label">Message:</label>
+                            <textarea name="message" class="form-control"></textarea>
+                        </div>
+                        <hr>
+                        <input type="submit" value="Send" class="btn btn-block btn-secondary">
+                                        <!-- if there is a button in form, it will close the modal -->
+                                        <button class="btn">Close</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </dialog>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Inquiry Modal -->
+    <div x-data="{ open: false }" id="inquiryModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="inquiryModalLabel">Make An Inquiry</h5>
+                    <button @click="open = false">Close Modal</button>
+                </div>
+                <div class="modal" x-show="open">
+                    <form action="{% url 'contact' %}" method="POST">
+                        {% csrf_token %}
+                        {% if user.is_authenticated %}
+                            <input type="hidden" name="user_id" value="{{ user.id }}">
+                        {% else %}
+                            <input type="hidden" name="user_id" value="0">
+                        {% endif %}
+                        <input type="hidden" name="realtor_email" value="{{ listing.realtor.email }}">
+                        <input type="hidden" name="listing_id" value="{{ listing.id }}">
+                        <div class="form-group">
+                            <label for="property_name" class="col-form-label">Property:</label>
+                            <input type="text" name="listing" class="form-control" value="{{ listing.title }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" name="name" class="form-control" {% if user.is_authenticated %}
+                                   value="{{ user.first_name }} {{ user.last_name }}" {% endif %} required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-form-label">Email:</label>
+                            <input type="email" name="email" class="form-control" {% if user.is_authenticated %}
+                                   value="{{ user.email }}" {% endif %} required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-form-label">Phone:</label>
+                            <input type="text" name="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="col-form-label">Message:</label>
+                            <textarea name="message" class="form-control"></textarea>
+                        </div>
+                        <hr>
+                        <input type="submit" value="Send" class="btn btn-block btn-secondary">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

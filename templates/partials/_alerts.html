@@ -1,0 +1,23 @@
+{% if messages %}
+    {% for message in messages %}
+        <div id="message" class="container mx-auto">
+            <div class="alert alert-{{ message.tags }}  alert-dismissible text-center" role="alert">
+                <button type="button" data-dismiss="alert" class="btn btn-circle btn-outline">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <strong>
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        Error:
+                    {% else %}
+                        {{ message.tags|title }}
+                    {% endif %}
+                </strong>
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
