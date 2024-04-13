@@ -13,7 +13,7 @@
     <!-- Hero -->
 
     <!-- Hero -->
-    <div class="w-full py-6 mx-auto px-4 sm:px-6 lg:px-8 dark:bg-slate-800">
+    <div class="w-full py-16 mx-auto px-4 sm:px-6 lg:px-8 dark:bg-slate-800">
         <!-- Grid -->
         <div class="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
             <div>
@@ -120,7 +120,7 @@
     <div class="w-full px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto dark:bg-slate-800">
         <!-- Grid -->
         <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
-            <div>
+            <div data-aos="fade-right" data-aos-delay="100">
                 <img class="rounded-xl"
                      src="https://images.unsplash.com/photo-1648737963503-1a26da876aca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=900&h=900&q=80"
                      alt="Image Description">
@@ -128,9 +128,9 @@
             <!-- End Col -->
 
             <div class="mt-5 sm:mt-10 lg:mt-0">
-                <div class="space-y-6 sm:space-y-8">
+                <div class="space-y-6 sm:space-y-8" data-aos="fade-left" data-aos-delay="100">
                     <!-- Title -->
-                    <div class="space-y-2 md:space-y-4">
+                    <div class="space-y-2 md:space-y-4" >
                         <h2 class="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
                             We tackle the challenges renting platforms face
                         </h2>
@@ -192,9 +192,9 @@
                 <h1 class="text-2xl font-semibold  capitalize lg:text-3xl ">Latest
                     Listings </h1>
 
-                <a href="{% url 'search' %}" class="btn btn-circle">
+                <a href="{% url 'search' %}" class="btn btn-circle btn-primary">
                     <svg xmlns="http://www.w3.org/2000/svg"
-                         class="w-6 h-6 hover:text-blue-500"
+                         class="w-6 h-6 hover:text-secondary"
                          fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -243,7 +243,7 @@
                                 <div class="text-xs uppercase font-bold tracking-wide">Host</div>
                                 <div class="flex items-center pt-2">
                                     <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3"
-                                         style="background-image: url({{ listing.host.photo }})">
+                                         style="background-image: url({{ listing.host.photo.url }})">
                                     </div>
                                     <div>
                                         <p class="font-bold ">{{ listing.host.name }}</p>
@@ -267,7 +267,7 @@
     <!-- Start Team -->
     <section class="py-6  dark:bg-slate-800 text-gray-800 dark:text-gray-200">
         <div class="container p-4 mx-auto space-y-16 sm:p-10">
-            <div class="space-y-4">
+            <div class="space-y-4" data-aos="fade-right">
                 <h3 class="text-2xl font-bold leading-none sm:text-5xl">Meet our team</h3>
                 <p class="max-w-2xl">Our team, a vibrant mix of tech enthusiasts, designers, and customer support
                     experts, is driven by a shared goal to enhance the travel and accommodation experience. We blend
@@ -276,7 +276,7 @@
                     crucial role in delivering an exceptional service that connects people and places seamlessly. United
                     by a passion for travel, we're dedicated to making every journey unforgettable.</p>
             </div>
-            <div class="grid w-full grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="grid w-full grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="space-y-4">
                     <img alt=""
                          class="object-cover sm:size-48 lg:size-60 mx-auto mb-4 bg-center rounded-xl dark:bg-gray-500"
@@ -404,7 +404,7 @@
     <div class="overflow-hidden bg-slate-800">
         <div class="relative max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
             <!-- Title -->
-            <div class="max-w-2xl w-3/4 lg:w-1/2 mb-6 sm:mb-10 md:mb-16">
+            <div class="max-w-2xl w-3/4 lg:w-1/2 mb-6 sm:mb-10 md:mb-16" data-aos="fade-right">
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl text-white font-semibold">
                     Loved by business and individuals across the globe
                 </h2>
@@ -412,14 +412,13 @@
             <!-- End Title -->
 
             <!-- Grid -->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up">
                 <!-- Card -->
                 <div class="flex h-auto">
                     <div class="flex flex-col bg-white rounded-xl dark:bg-slate-900">
                         <div class="flex-auto p-4 md:p-6">
                             <p class="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
-                                " With Preline, we're able to easily track our performance in full detail. It's become
-                                an essential tool for us to grow and engage with our audience. "
+                                "As a solo traveler, finding the right place to stay is crucial to my adventures. This app has been a game-changer for me. I've discovered unique stays that made my travels unforgettable, from cozy apartments in the heart of the city to tranquil retreats in the countryside. The ease of use and the exceptional customer support have made every trip smooth and hassle-free. It’s more than just a booking platform; it’s a gateway to new experiences."
                             </p>
                         </div>
 
@@ -436,7 +435,7 @@
                                         Josh Tyson
                                     </p>
                                     <p class="text-xs text-gray-500 dark:text-gray-400">
-                                        Product Manager | Capsule
+                                        San Francisco, CA
                                     </p>
                                 </div>
                             </div>
@@ -450,8 +449,7 @@
                     <div class="flex flex-col bg-white rounded-xl dark:bg-slate-900">
                         <div class="flex-auto p-4 md:p-6">
                             <p class="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
-                                " In September, I will be using this theme for 2 years. I went through multiple updates
-                                and changes and I'm very glad to see the consistency and effort made by the team. "
+                                "Traveling for work used to be a series of unremarkable hotel stays until I started using this app. It has transformed my business trips into opportunities to explore and enjoy. Finding accommodations that blend comfort with convenience has never been easier. Whether it's last-minute bookings or extended stays, I know I can rely on this platform for the best options. It's not just about the places; it’s the attention to detail and personalized service that sets it apart."
                             </p>
                         </div>
 
@@ -459,16 +457,16 @@
                             <div class="flex items-center">
                                 <div class="flex-shrink-0">
                                     <img class="size-8 rounded-full sm:h-[2.875rem] sm:w-[2.875rem]"
-                                         src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+                                         src="https://images.unsplash.com/photo-1524701208119-e91fc2e4c8e5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTk5fHxpbmRpYW4lMjB3b21hbiUyMHBvcnRyYWl0fGVufDB8fDB8fHww"
                                          alt="Image Description">
                                 </div>
 
                                 <div class="grow ms-3">
                                     <p class="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">
-                                        Luisa
+                                        Priya Singh
                                     </p>
                                     <p class="text-xs text-gray-500 dark:text-gray-400">
-                                        Senior Director of Operations | Fitbit
+                                        New Delhi, India
                                     </p>
                                 </div>
                             </div>
@@ -482,8 +480,7 @@
                     <div class="flex flex-col bg-white rounded-xl dark:bg-slate-900">
                         <div class="flex-auto p-4 md:p-6">
                             <p class="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
-                                " Refreshing and Thought provoking design and it changes my view about how I design the
-                                websites. Great typography, modern clean white design, nice tones of the color. "
+                                "Planning a family vacation is no small feat, but this app has taken much of the stress away. We’ve been able to find family-friendly homes that cater to our needs, complete with all the amenities to keep everyone happy. The reviews and photos give us a clear picture of what to expect, and the booking process is straightforward and secure. Our holidays have been more enjoyable and memorable, thanks to the variety and quality of accommodations available. This app isn’t just a platform; it’s part of our travel tradition now."
                             </p>
                         </div>
 
@@ -500,7 +497,7 @@
                                         Alisa Williams
                                     </p>
                                     <p class="text-xs text-gray-500 dark:text-gray-400">
-                                        Entrepreneur | Happy customer
+                                        Melbourne, Australia
                                     </p>
                                 </div>
                             </div>
@@ -512,7 +509,7 @@
             <!-- End Grid -->
 
             <!-- Grid -->
-            <div class="mt-20 grid gap-6 grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:gap-8">
+            <div class="mt-20 grid gap-6 grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:gap-8" data-aos="fade-left">
                 <!-- Stats -->
                 <div>
                     <h4 class="text-lg sm:text-xl font-semibold text-gray-800 dark:text-gray-200">Guests Served</h4>
@@ -560,14 +557,14 @@
     <!-- Newsletter -->
     <div class=" px-4 py-10 sm:px-6 lg:px-8 lg:py-16 mx-auto dark:bg-slate-800 text-gray-800 dark:text-gray-200">
         <div class="grid md:grid-cols-2 gap-8">
-            <div class="max-w-md">
+            <div class="max-w-md" data-aos="fade-right">
                 <h2 class="text-2xl font-bold md:text-3xl md:leading-tight ">Subscribe</h2>
                 <p class="mt-3 ">
                     Subscribe and start making the most of every engagement.
                 </p>
             </div>
 
-            <form>
+            <form data-aos="fade-left">
                 <div class="w-full sm:max-w-lg md:ms-auto">
                     <div class="flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
                         <div class="w-full">

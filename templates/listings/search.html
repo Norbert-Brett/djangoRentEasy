@@ -5,8 +5,27 @@
 {% block title %} | Search Results {% endblock %}
 
 {% block content %}
-    
-<section class="flex items-center h-auto py-4 bg-gray-50 dark:bg-gray-900">
+     <!-- Breadcrumb -->
+    <div class="text-sm breadcrumbs px-6">
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'listings' %}">
+                    Browse Listings
+                </a>
+            </li>
+            <li>
+      <a href="{% url 'search' %}" class="inline-flex gap-2 items-center text-blue-500">Search Results
+      </a>
+            </li>
+        </ul>
+    </div>
+
+<section class="flex items-center h-auto py-6">
     <div class="w-full max-w-screen-xl px-4 mx-auto lg:px-12">
         <!-- Start coding here -->
         <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 md:rounded-full">
@@ -62,26 +81,7 @@
     </div>
 </section>
 
-    <!-- Breadcrumb -->
-    <div class="text-sm breadcrumbs px-6">
-        <ul>
-            <li>
-                <a href="{% url 'index' %}">
-                    <i class="fas fa-home"></i> Home
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'listings' %}">
-                    Browse Listings
-                </a>
-            </li>
-            <li>
-      <a href="{% url 'search' %}" class="inline-flex gap-2 items-center text-blue-500">Search Results
-      </a>
-            </li>
-        </ul>
-    </div>
-
+   
 
     <!-- Listings -->
     <section class="container mx-auto">
@@ -142,7 +142,7 @@
     </section>
     
     <!-- Pagination -->
-    <nav aria-label="Page navigation example" class="flex justify-center items-center mx-auto my-8">
+    <nav aria-label="Page navigation" class="flex justify-center items-center mx-auto my-8">
         {% if listings.has_other_pages %}
             <ul class="join">
                 {% if listings.has_previous %}
@@ -160,7 +160,7 @@
                     {% if listings.number == i %}
                         <li>
                             <a
-                                    class="join-item btn btn-sm btn-active">{{ i }}</a>
+                                    class="join-item btn btn-sm btn-active btn-primary">{{ i }}</a>
                         </li>
                     {% else %}
                         <li>
