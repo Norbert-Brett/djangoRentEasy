@@ -4,61 +4,88 @@
 
 {% block content %}
     <main class="dark:bg-slate-800 text-gray-800 dark:text-gray-200 px-4">
-    <section class="py-5">
-        <div class="container mx-auto">
-            <div class="text-center">
-                <div class="">
-                    <h1 class="text-2xl font-semibold capitalize lg:text-3xl">User Dashboard</h1>
-                    <p class="text-sm">Manage your RentEasy account</p>
+        <!-- Breadcrumb -->
+        <div class="text-sm breadcrumbs my-4">
+            <ul>
+                <li><a href="{% url 'index' %}"><i class="fas fa-home mr-2"></i> Home</a></li>
+                <li><a href="{% url 'dashboard' %}" class="text-blue-600">Dashboard</a></li>
+            </ul>
+        </div>
+        <section class="py-5">
+            <div class="container mx-auto">
+                <div class="text-center">
+                    <div class="">
+                        <h1 class="text-2xl font-semibold capitalize lg:text-3xl">User Dashboard</h1>
+                        <p class="text-sm">Manage your RentEasy account</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-<!-- Breadcrumb -->
-    <div class="text-sm breadcrumbs my-4">
-        <ul>
-            <li><a href="{% url 'index' %}"><i class="fas fa-home mr-2"></i> Home</a></li>
-            <li><a href="{% url 'dashboard' %}" class="text-blue-600">Dashboard</a></li>
-        </ul>
-    </div>
+        </section>
 
-    <!-- Alerts -->
-    {% include 'partials/_alerts.html' %}
 
-    <section  class="py-4">
-        <div class="container h-screen">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Welcome {{ user.first_name }}</h2>
-                    {% if contacts %}
-                        <p>Here are the property listings that you have inquired about</p>
-                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                            <thead>
-                            <tr>
-                                <th scope="col" class="px-6 py-3 text-start whitespace-nowrap"><span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">#</span></th>
-                                <th scope="col" class="px-6 py-3 text-start whitespace-nowrap min-w-64"><span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">Property</span></th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                            {% for contact in contacts %}
+        <!-- Alerts -->
+        {% include 'partials/_alerts.html' %}
+
+        <section class="py-16">
+            <div class="container mx-auto">
+                <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+                    <div class="overflow-x-auto">
+                        <div class="p-2.5 flex flex-col">
+                            <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                                Welcome {{ user.name }}</h2>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Here are the property listings that you
+                                have inquired about</p>
+                        </div>
+                        {% if contacts %}
+
+                            <table class="min-w-full table">
+                                <thead>
                                 <tr>
-                                    <td class="size-px whitespace-nowrap px-6 py-3">{{ contact.id }}</td>
-                                    <td class="size-px whitespace-nowrap px-6 py-3">{{ contact.listing }}</td>
-                                    <td class="size-px whitespace-nowrap px-6 py-3">
-                                        <a class="btn btn-secondary" href="{% url 'listing' contact.listing_id %}">View
-                                            Listing</a>
+                                    <th>ID</th>
+                                    <th class="px-6 py-3 text-start whitespace-nowrap"><span class="">Name</span></th>
+                                    <th class="px-6 py-3 text-start whitespace-nowrap"><span class="">Email</span></th>
+                                    <th class="px-6 py-3 text-start whitespace-nowrap"><span class="">Inquiry</span>
+                                    </th>
+                                    <th class="px-6 py-3 text-start whitespace-nowrap "><span class="">Property</span>
+                                    </th>
+
+                                </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                {% for contact in contacts %}
+                                    <tr class="hover">
+                                        <td>{{ contact.id }}</td>
+                                        <td class="">{{ contact.name }}</td>
+                                        <td class="">{{ contact.email }}</td>
+                                        <td class="">{{ contact.message }}</td>
+                                        <td class="">{{ contact.listing }}</td>
+                                        <td class="">
+                                            <a class="btn btn-secondary btn-xs" href="{% url 'listing' contact.listing_id %}">View
+                                                Listing</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td class="my-4">
+                                        <p class="text-sm text-gray-600 dark:text-gray-400 flex gap-4">
+                                            {% if contacts|length == 1 %}
+                                                {{ contacts|length }} inquiry
+                                            {% else %}
+                                                {{ contacts|length }} inquiries
+                                            {% endif %}
+                                        </p>
                                     </td>
                                 </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    {% else %}
-                        <p>You have not made any inquiries</p>
-                    {% endif %}
+                                </tfoot>
+                            </table>
+                        {% else %}
+                            <p>You have not made any inquiries</p>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
 {% endblock %}

@@ -1,3 +1,4 @@
+from django.http import HttpResponseBadRequest
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
@@ -27,9 +28,16 @@ def index(request):
 
 def listing(request, listing_id):
     listing = get_object_or_404(Listing, pk=listing_id)
-
+    if request.method == 'POST':
+        if 'listing_id' in request.POST:
+            # Handle the 'listing_id' here
+            pass
+        else:
+            return HttpResponseBadRequest("Bad Request: No listing_id field in POST data")
     context = {
-        'listing': listing
+        'listing': listing,
+        'listing_id': listing_id,
+        'listing_title': listing.title
     }
 
     return render(request, 'listings/listing.html', context)
