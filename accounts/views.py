@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from contacts.models import Contact
-from hosts.models import Host
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 def register(request):
@@ -14,6 +14,7 @@ def register(request):
         email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST['password2']
+        role = request.POST['role']
 
         # Check if passwords match
         if password == password2:
@@ -29,11 +30,8 @@ def register(request):
                     # Looks good
                     user = User.objects.create_user(username=username, password=password, email=email,
                                                     first_name=first_name, last_name=last_name)
-                    # Login after register
-                    # auth.login(request, user)
-                    # messages.success(request, 'You are now logged in')
-                    # return redirect('index')
-                    user.save()
+                    user.profile.role = role
+                    user.profile.save()
                     messages.success(request, 'You are now registered and can log in')
                     return redirect('login')
         else:
@@ -75,3 +73,13 @@ def dashboard(request):
         'contacts': user_contacts
     }
     return render(request, 'accounts/dashboard.html', context)
+
+
+def is_host(user):
+    return user.profile.role == 'host'
+
+
+@login_required
+@user_passes_test(is_host)
+def create_listing(request):
+    return render(request, 'accounts/create_listing.html')
