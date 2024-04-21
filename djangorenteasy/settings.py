@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'djangorenteasy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'djangobnb',
+        'NAME': 'renteasy',
         'USER': 'postgres',
         'PASSWORD': 'snaiderel',
         'HOST': 'localhost'
@@ -101,6 +101,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
+AUTH_USER_MODEL = 'accounts.Account'
+
 
 LANGUAGE_CODE = 'en-us'
 
