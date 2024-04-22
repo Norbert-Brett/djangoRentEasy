@@ -52,7 +52,7 @@
                              aria-label="show notifications">
                             <a href="{% url 'logout' %}"
                            class="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <i class="fas fa-sign-out-alt"></i> Logout
+                            <i class="bi bi-box-arrow-right mr-2"></i> Logout
                         </a>
                             <form action="" method="POST" id="logout">
                                 {% csrf_token %}
@@ -70,10 +70,10 @@
                     {% else %}
                     <div class="flex">
                         <a href="{% url 'register' %}" class="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" >
-                            <i class="fas fa-user-plus"></i> Register</a>
+                            <i class="bi bi-person-add mr-2"></i> Register</a>
                     
                         <a class="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" href="{% url 'login' %}">
-                            <i class="fas fa-sign-in-alt"></i>
+                            <i class="bi bi-box-arrow-in-right mr-2"></i>
 
                             Login</a>
                     </div>
