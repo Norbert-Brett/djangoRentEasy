@@ -10,11 +10,9 @@
 
     <!-- Custom -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link
-                rel="stylesheet"
-                href="https://cdn.jsdelivr.net/npm/rippleui@1.12.1/dist/css/styles.css"
-        />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
 
    <!-- TailwindCSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,7 +24,7 @@
     <title>RentEasy {% block title %}{% endblock %}</title>
 </head>
 
-<body data-theme="cmyk" class="font-inter antialiased tracking-tight relative">
+<body data-theme="cupcake" class="font-inter antialiased tracking-tight relative">
 
 <!-- NavBar -->
 {% include 'partials/_navbar.html' %}
@@ -42,6 +40,7 @@
 <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
 <script src="{% static 'js/main.js' %} "></script>
 <script src="//unpkg.com/alpinejs" defer></script>
+<script src="{% static 'js/lightbox.min.js' %}"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({

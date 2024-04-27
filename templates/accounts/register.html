@@ -1,88 +1,72 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %} | Register Account {% endblock %}
 {% block content %}
-    <main class="dark:bg-slate-800 text-gray-800 dark:text-gray-200">
-        <section class="container mx-auto w-full max-w-screen-lg grid place-content-center py-6">
-            <div class=" mt-7 py-8 px-12 ">
-                {% include 'partials/_alerts.html' %}
-                <div class="p-4 sm:p-7">
-                    <div class="text-center">
-                        <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Register</h1>
-                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                            Already have an account?
-                            <a class="text-blue-600 decoration-2 hover:underline font-medium"
-                               href="{% url 'login' %}">
-                                Sign in here
-                            </a>
-                        </p>
+    <main class=" text-gray-800 container mx-auto flex justify-center">
+        <div class="w-fit py-12">
+            {% include 'partials/_alerts.html' %}
+            <!-- Card -->
+            <div class="flex flex-col border rounded-xl p-4 sm:p-6 lg:p-10 ">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">
+                    Register Account
+                </h2>
+                <form action="{% url 'register' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+                            <div class=" grid gap-4 lg:gap-6">
+                            <label for="first_name" class="block text-sm text-gray-700 font-medium">First
+                                Name</label>
+                            <input id="first_name" type="text" name="first_name"
+                                   class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                   required>
+                        </div>
+                        <div class=" grid gap-4 lg:gap-6">
+                            <label for="last_name" class="block text-sm text-gray-700 font-medium">Last
+                                Name</label>
+                            <input id="last_name" type="text" name="last_name"
+                                   class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                   required>
+                        </div>
                     </div>
-
-                    <div class="mt-5 flex-1 justify-center items-center">
-
-                        <!-- Form -->
-                        <form action="{% url 'register' %}" method="POST">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <!-- Form Group -->
-                                <div class="form-field">
-                                    <div class="relative">
-                                        <label for="first name">First Name</label>
-                                        {{ form.first_name }}
-                                    </div>
-                                </div>
-                                <!-- End Form Group -->
-                                <!-- Form Group -->
-                                <div>
-                                    <div class="relative">
-                                        <label for="last_name" class="form-label">Last Name</label>
-                                        {{ form.last_name }}
-                                        <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
-                                            <svg class="size-5 text-red-500" width="16" height="16" fill="currentColor"
-                                                 viewBox="0 0 16 16" aria-hidden="true">
-                                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Form Group -->
-                                <!-- Form Group -->
-                                <div>
-                                    <div class="relative">
-                                        <label for="email">Email</label>
-                                        {{ form.email }}
-                                    </div>
-                                </div>
-                                <!-- End Form Group -->
-                                <!-- Form Group -->
-                                <div>
-                                    <div class="relative">
-                                        <label for="password">Password</label>
-                                        {{ form.password }}
-
-                                    </div>
-                                </div>
-                                <!-- End Form Group -->
-
-                                <!-- Form Group -->
-                                <div>
-                                    <div class="relative">
-                                        <label for="password">Confirm Password</label>
-                                        {{ form.confirm_password }}
-                                    </div>
-                                </div>
-                                <!-- End Form Group -->
-
-                                <button type="submit"
-                                        class="btn btn-primary">
-                                    Sign up
-                                </button>
-                            </div>
-                        </form>
-                        <!-- End Form -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 my-6">
+                        <div class="form-group">
+                            <label for="username" class="block mb-2 text-sm text-gray-700 font-medium">Username</label>
+                            <input id="username" type="text" name="username"
+                                   class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="block mb-2 text-sm text-gray-700 font-medium">Email</label>
+                            <input id="email" type="email" name="email"
+                                   class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                   required>
+                        </div>
                     </div>
-                </div>
+                    <div class="grid gap-4">
+                        <div class="form-group">
+                        <label for="password" class="block mb-2 text-sm text-gray-700 font-medium">Password</label>
+                        <input id="password" type="password" name="password"
+                               class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password2" class="block mb-2 text-sm text-gray-700 font-medium">Confirm
+                            Password</label>
+                        <input id="password2" type="password" name="password2"
+                               class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                               required>
+                    </div>
+                    </div>
+                    
+                    <input type="submit" value="Register" class="btn btn-primary btn-block mt-6">
+                </form>
+                <!-- End Grid -->
+
+
             </div>
-        </section>
+            <!-- End Card -->
+        </div>
+        <!-- End Col -->
+
     </main>
 {% endblock %}

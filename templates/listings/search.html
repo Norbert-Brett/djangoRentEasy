@@ -19,20 +19,20 @@
                 </a>
             </li>
             <li>
-      <a href="{% url 'search' %}" class="inline-flex gap-2 items-center text-blue-500">Search Results
+      <a href="{% url 'search' %}" class="inline-flex gap-2 items-center ">Search Results
       </a>
             </li>
         </ul>
     </div>
 
-<section class="flex items-center h-auto py-6">
+<section class="flex items-center py-6">
     <div class="w-full max-w-screen-xl px-4 mx-auto lg:px-12">
         <!-- Start coding here -->
-        <div class="relative overflow-hidden bg-white shadow-md md:rounded-full">
+        <div class="relative overflow-hidden bg-slate-50 shadow-md md:rounded-2xl p-2">
             <form action="{% url 'search' %}">
                 <div class="flex flex-col items-center justify-center p-2 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
 
-                    <div class="inline-flex flex-col gap-4 w-full rounded-md shadow-sm md:w-auto md:flex-row"
+                    <div class="inline-flex flex-col gap-4 w-full rounded-md md:w-auto md:flex-row"
                          role="group">
                         
                         <div class="mb-6">
@@ -70,7 +70,7 @@
                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
                         <button type="submit"
-                                class="mt-6 text-white grid place-content-center w-12 h-12 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center d">
+                                class="mt-6 text-white btn btn-circle btn-primary">
                             <i class="bi bi-search"></i>
                             <span class="sr-only">Icon description</span>
                         </button>
