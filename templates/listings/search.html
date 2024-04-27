@@ -6,11 +6,11 @@
 
 {% block content %}
      <!-- Breadcrumb -->
-    <div class="text-sm breadcrumbs px-6">
+    <div class="text-sm breadcrumbs p-6">
         <ul>
             <li>
                 <a href="{% url 'index' %}">
-                    <i class="fas fa-home"></i> Home
+                    <i class="bi bi-house-fill mr-2"></i> Home
                 </a>
             </li>
             <li>
@@ -28,7 +28,7 @@
 <section class="flex items-center h-auto py-6">
     <div class="w-full max-w-screen-xl px-4 mx-auto lg:px-12">
         <!-- Start coding here -->
-        <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 md:rounded-full">
+        <div class="relative overflow-hidden bg-white shadow-md md:rounded-full">
             <form action="{% url 'search' %}">
                 <div class="flex flex-col items-center justify-center p-2 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
 
@@ -37,41 +37,41 @@
                         
                         <div class="mb-6">
                             <label for="default-input"
-                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
+                                   class="block mb-2 text-sm font-medium text-gray-900 ">City</label>
                             <input type="text" id="default-input" name="city" placeholder="London"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
                         
                         <div class="mb-6">
                             <label for="default-input"
                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
                             <input type="text" id="default-input" name="country" placeholder="United Kingdom"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
 
                         <div class="mb-6">
                             <label for="default-input"
                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bedrooms</label>
                             <input type="text" id="default-input" name="bedrooms" placeholder="3"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
                         
                         <div class="mb-6">
                             <label for="default-input"
                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bathrooms</label>
                             <input type="text" id="default-input" name="bathrooms" placeholder="3"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
 
                         <div class="mb-6">
                             <label for="default-input"
                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
                             <input type="text" id="default-input" name="price" placeholder="£200"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         </div>
                         <button type="submit"
-                                class="mt-4 text-white grid place-content-center w-14 h-14 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <i class="fa-solid fa-magnifying-glass"></i>
+                                class="mt-6 text-white grid place-content-center w-12 h-12 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center d">
+                            <i class="bi bi-search"></i>
                             <span class="sr-only">Icon description</span>
                         </button>
                     </div>
@@ -97,31 +97,30 @@
                             <div class="mt-8 card-body">
                                 <div class="flex justify-between">
                                     <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-teal-500 text-white">£ {{ listing.price | intcomma }}</span>
-                                    <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-600 text-white dark:bg-blue-500">{{ listing.category }}</span>
+                                    <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-600 text-white">{{ listing.category }}</span>
                                 </div>
 
 
-                                <h1 class="mt-4 card-title text-gray-800 dark:text-white">
+                                <h1 class="mt-4 card-title text-gray-800 ">
                                     {{ listing.title }}
                                 </h1>
 
-                                <p class="mt-2 text-gray-500 dark:text-gray-400">
+                                <p class="mt-2 text-gray-500 ">
                                     {{ listing.description | truncatewords:30 }}
                                 </p>
 
                                 <div class="flex items-center justify-between mt-4 card-actions">
                                     <div>
-                                        <div class="text-lg font-medium text-gray-700 dark:text-gray-300">
+                                        <div class="text-lg font-medium text-gray-700 ">
                                             {{ listing.city }}, {{ listing.country }}
                                         </div>
                                         <div class="flex gap-2 justify-between">
-                                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ listing.bedrooms }}
+                                            <p class="text-sm text-gray-500 ">{{ listing.bedrooms }}
                                                 Bedrooms</p>
-                                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ listing.bathrooms }}
+                                            <p class="text-sm text-gray-500 ">{{ listing.bathrooms }}
                                                 Bathrooms</p>
                                         </div>
-                                        <p class="text-sm text-gray-500 dark:text-gray-400"><i
-                                                class="fas fa-clock"></i> {{ listing.list_date | timesince }} ago</p>
+                                        <p class="text-sm text-gray-500 "><i class="bi bi-clock"></i> {{ listing.list_date | timesince }} ago</p>
                                     </div>
 
                                     <a href="{% url 'listing' listing.id %}"

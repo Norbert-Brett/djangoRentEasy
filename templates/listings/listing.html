@@ -5,21 +5,21 @@
 {% block title %} | {{ listing.title }} {% endblock %}
 
 {% block content %}
-    <main class="dark:bg-slate-800 text-gray-800 dark:text-gray-200">
+    <main class=" text-gray-800 ">
         <section class="container mx-auto py-16">
             <!-- Breadcrumb -->
             <nav class="flex px-6 py-4 breadcrumbs" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                     <li class="inline-flex items-center">
                         <a href="{% url 'index' %}"
-                           class="inline-flex items-center text-sm font-medium hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-                            <i class="fas fa-home mx-2"></i>
+                           class="inline-flex items-center text-sm font-medium hover:text-blue-600 ">
+                            <i class="bi bi-house-fill mx-2"></i>
                             Home
                         </a>
                     </li>
                     <li>
                         <div class="flex items-center">
-                            <a class="ms-1 text-sm font-medium md:ms-2 hover:text-blue-600 dark:text-gray-400 dark:text-gray-400 dark:hover:text-white">Browse
+                            <a class="ms-1 text-sm font-medium md:ms-2 hover:text-blue-600 ">Browse
                                 Listings</a>
                         </div>
                     </li>
@@ -34,7 +34,7 @@
                         <div class="grid md:grid-col-2">
                             <h1 class="text-primary text-4xl font-bold py-2">{{ listing.title }}</h1>
                             <p class="py-2 text-lg">
-                                <i class="fas fa-map-marker text-secondary mx-2"></i> {{ listing.city }}
+                                <i class="bi bi-geo-alt-fill text-secondary mx-2"></i> {{ listing.city }}
                                 , {{ listing.country }}
                             </p>
                         </div>
@@ -138,16 +138,16 @@
 
                                     <div>
                                         <ul class="list-none grid gap-2">
-                                            <li class="text-gray-500 dark:text-gray-200">
-                                                <i class="fas fa-money-bill-alt"></i> Price per night:
+                                            <li class="text-gray-500 ">
+                                                 Price per night:
                                                 <span class="float-right">£ {{ listing.price | intcomma }}</span>
                                             </li>
-                                            <li class="text-gray-500 dark:text-gray-200">
-                                                <i class="fas fa-bed"></i> Bedrooms:
+                                            <li class="text-gray-500 ">
+                                                 Bedrooms:
                                                 <span class="float-right">{{ listing.bedrooms }}</span>
                                             </li>
-                                            <li class="text-gray-500 dark:text-gray-200">
-                                                <i class="fas fa-bath"></i> Bathrooms:
+                                            <li class="text-gray-500 ">
+                                                 Bathrooms:
                                                 <span class="float-right">{{ listing.bathrooms }}</span>
                                             </li>
                                         </ul>
@@ -177,7 +177,7 @@
                                 <!-- Open the modal using ID.showModal() method -->
                                 <button class="btn btn-primary" onclick="my_modal_5.showModal()">Send Message</button>
                                 <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-                                    <div class="modal-box dark:bg-slate-700">
+                                    <div class="modal-box ">
                                         <div class="mt-12 max-w-lg mx-auto">
                                             <!-- Card -->
                                             <div class="flex flex-col border rounded-xl p-4 sm:p-6 lg:p-8 dark:border-gray-700">
@@ -186,7 +186,7 @@
                                                         ✕
                                                     </button>
                                                 </form>
-                                                <h2 class="mb-8 text-xl font-semibold text-gray-800 dark:text-gray-200">
+                                                <h2 class="mb-8 text-xl font-semibold text-gray-800 ">
                                                     Fill in the form
                                                 </h2>
 
@@ -203,22 +203,22 @@
                                                     <div class="grid gap-4 lg:gap-6">
                                                         <div>
                                                             <label for="name"
-                                                                   class="block mb-2 text-sm text-gray-700 font-medium dark:text-white">Name
+                                                                   class="block mb-2 text-sm text-gray-700 font-medium ">Name
                                                                 <input type="text" name="name"
                                                                        id="name"
                                                                        {% if user.is_authenticated %} value="{{ user.first_name }} {{ user.last_name }}" {% endif %} 
-                                                                       class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                                                                       class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
                                                                        required>
                                                             </label>
                                                         </div>
                                                         <!-- End Grid -->
                                                         <div>
                                                             <label for="listing"
-                                                                   class="block mb-2 text-sm text-gray-700 font-medium dark:text-white">Property
+                                                                   class="block mb-2 text-sm text-gray-700 font-medium ">Property
                                                                 <input type="text" name="listing"
                                                                        id="listing"
                                                                        value="{{ listing.title }}"
-                                                                       class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                                                                       class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
                                                                        required>
                                                             </label>
                                                         </div>
@@ -226,10 +226,10 @@
                                                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
                                                             <div>
                                                                 <label for="email"
-                                                                       class="block mb-2 text-sm text-gray-700 font-medium dark:text-white">Email
+                                                                       class="block mb-2 text-sm text-gray-700 font-medium ">Email
                                                                 <input type="email" name="email"
                                                                        id="hs-email-contacts-1" autocomplete="email"
-                                                                       class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                                                                       class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
                                                                         {% if user.is_authenticated %}
                                                                        value="{{ user.email }}"  {% endif %} required>
                                                                 </label>
@@ -237,11 +237,11 @@
 
                                                             <div>
                                                                 <label for="phone"
-                                                                       class="block mb-2 text-sm text-gray-700 font-medium dark:text-white">Phone
+                                                                       class="block mb-2 text-sm text-gray-700 font-medium ">Phone
                                                                     Number</label>
                                                                 <input type="text" name="phone"
                                                                        id="phone"
-                                                                       class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                                                                       class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
                                                                         >
                                                             </div>
                                                         </div>
@@ -249,10 +249,10 @@
 
                                                         <div>
                                                             <label for="message"
-                                                                   class="block mb-2 text-sm text-gray-700 font-medium dark:text-white">Details</label>
+                                                                   class="block mb-2 text-sm text-gray-700 font-medium ">Details</label>
                                                             <textarea id="message"
                                                                       name="message" rows="4"
-                                                                      class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"></textarea>
+                                                                      class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "></textarea>
                                                         </div>
                                                     </div>
                                                     <!-- End Grid -->
@@ -265,7 +265,7 @@
                                                     </div>
 
                                                     <div class="mt-3 text-center">
-                                                        <p class="text-sm text-gray-500 dark:text-gray-200">
+                                                        <p class="text-sm text-gray-500 ">
                                                             We'll get back to you in 1-2 business days.
                                                         </p>
                                                     </div>
@@ -282,7 +282,7 @@
                 </div>
             </div>
 
-            <section class="py-20 dark:bg-slate-800 text-gray-800 dark:text-gray-200 ">
+            <section class="py-20  text-gray-800  ">
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div class=" rounded-2xl p-8 xl:p-11">
                         <h2 class="font-manrope text-4xl text-center font-bold mb-4">Subscribe to the latest offer

@@ -15,9 +15,6 @@ from django.core.mail import EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
 
 
-import requests
-
-
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)

@@ -6,20 +6,20 @@
 
 {% block content %}
 
-   <main class="dark:bg-slate-800 text-gray-800 dark:text-gray-200">
+   <main class=" text-gray-800 ">
     <!-- Breadcrumb -->
     <nav class="flex px-6 py-4 breadcrumbs" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
             <li class="inline-flex items-center">
                 <a href="{% url 'index' %}"
-                   class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
-                    <i class="fas fa-home mx-2"></i>
+                   class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 ">
+                    <i class="bi bi-house-fill mx-2"></i>
                     Home
                 </a>
             </li>
             <li>
                 <div class="flex items-center">
-                    <a class="ms-1 text-sm font-medium text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Browse
+                    <a class="ms-1 text-sm font-medium text-blue-600 md:ms-2 ">Browse
                         Listings</a>
                 </div>
             </li>
@@ -27,7 +27,7 @@
     </nav>
 
     <!-- Listings -->
-    <section class="t">
+    <section >
         <div class="container px-6 py-10 mx-auto">
             <div class="flex items-center justify-between">
                 <h1 class="text-2xl font-semibold capitalize lg:text-3xl ">Latest
@@ -43,7 +43,7 @@
                 </a>
             </div>
 
-            <hr class="my-8 border-gray-200 dark:border-gray-700">
+            <hr class="my-8 border-gray-200 ">
 
             <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
                 {% if listings %}
@@ -57,7 +57,7 @@
                             <div class="mt-8 card-body">
                                 <div class="flex justify-between">
                                     <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-teal-500 text-white">£ {{ listing.price | intcomma }}</span>
-                                    <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-600 text-white dark:bg-blue-500">{{ listing.category }}</span>
+                                    <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-600 text-white ">{{ listing.category }}</span>
                                 </div>
 
 
