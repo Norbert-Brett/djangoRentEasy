@@ -16,7 +16,7 @@ class Listing(models.Model):
     bedrooms = models.IntegerField(default=1)
     bathrooms = models.IntegerField(default=1)
     guests = models.IntegerField(default=1)
-    photo_main = models.ImageField(upload_to='photos/listings/',validators=[allow_only_images_validator])
+    photo_main = models.ImageField(upload_to='photos/listings/', validators=[allow_only_images_validator])
     date_from = models.DateField(default=datetime.now, blank=True)
     date_to = models.DateField(default=datetime.now, blank=True)
     photo_1 = models.ImageField(upload_to='photos/listings/', blank=True, validators=[allow_only_images_validator])

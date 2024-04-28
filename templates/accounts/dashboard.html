@@ -3,7 +3,7 @@
 {% block title %} | User Dashboard {% endblock %}
 
 {% block content %}
-    <main class="dark:bg-slate-800 text-gray-800 dark:text-gray-200 px-4">
+    <main class=" text-gray-800 px-4">
         <!-- Breadcrumb -->
     <div class="breadcrumbs text-sm p-4">
 	<ul>
@@ -25,7 +25,7 @@
                 <div class="text-center">
                     <div class="">
                         <h1 class="text-2xl font-semibold capitalize lg:text-3xl">User Dashboard</h1>
-                        <p class="text-sm">Manage your RentEasy account <span >{{user.full_name}}</span></p>
+                        <p class="text-sm">Manage your RentEasy account</p>
                     </div>
                     
                 </div>
@@ -41,9 +41,9 @@
                 <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                     <div class="overflow-x-auto">
                         <div class="p-2.5 flex flex-col">
-                            <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                            <h2 class="text-xl font-semibold text-gray-800">
                                 Welcome {{ user.name }}</h2>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Here are the property listings that you
+                            <p class="text-sm text-gray-600 ">Here are the property listings that you
                                 have inquired about</p>
                         </div>
                         {% if contacts %}
@@ -51,17 +51,17 @@
                             <table class="min-w-full table">
                                 <thead>
                                 <tr>
-                                    <th class="px-6 py-3 text-start whitespace-nowrap dark:text-slate-200">ID</th>
-                                    <th class="px-6 py-3 text-start whitespace-nowrap dark:text-slate-200"><span class="">Name</span></th>
-                                    <th class="px-6 py-3 text-start whitespace-nowrap dark:text-slate-200"><span class="">Email</span></th>
-                                    <th class="px-6 py-3 text-start whitespace-nowrap dark:text-slate-200"><span class="">Inquiry</span>
+                                    <th class="px-6 py-3 text-start whitespace-nowrap ">ID</th>
+                                    <th class="px-6 py-3 text-start whitespace-nowrap "><span class="">Name</span></th>
+                                    <th class="px-6 py-3 text-start whitespace-nowrap "><span class="">Email</span></th>
+                                    <th class="px-6 py-3 text-start whitespace-nowrap "><span class="">Inquiry</span>
                                     </th>
-                                    <th class="px-6 py-3 text-start whitespace-nowrap dark:text-slate-200"><span class="">Property</span>
+                                    <th class="px-6 py-3 text-start whitespace-nowrap "><span class="">Property</span>
                                     </th>
 
                                 </tr>
                                 </thead>
-                                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tbody class="divide-y divide-gray-200 ">
                                 {% for contact in contacts %}
                                     <tr class="hover">
                                         <td>{{ contact.id }}</td>
@@ -79,7 +79,7 @@
                                 <tfoot>
                                 <tr>
                                     <td class="my-4">
-                                        <p class="text-sm text-gray-600 dark:text-gray-400 flex gap-4">
+                                        <p class="text-sm text-gray-600  flex gap-4">
                                             {% if contacts|length == 1 %}
                                                 {{ contacts|length }} inquiry
                                             {% else %}

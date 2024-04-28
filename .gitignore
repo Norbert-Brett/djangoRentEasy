@@ -10,3 +10,6 @@ venv
 /static
 .vscode
 .idea
+
+# Ignore all .env files
+.env

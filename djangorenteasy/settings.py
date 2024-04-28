@@ -1,19 +1,26 @@
 import os
+import dj_database_url
 
 from pathlib import Path
 # Messages
 from django.contrib.messages import constants as messages
 
+# Load .env variables
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-s^o2i@em0*g)3=1jb$he&)fbdxqhpl5(c(#x9v)3n(*6_orxt*'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
 # Application definition
 
@@ -26,13 +33,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.humanize',
     'django.contrib.staticfiles',
-    "pages.apps.PagesConfig",
-    "listings.apps.ListingsConfig",
-    "accounts.apps.AccountsConfig",
-    "contacts.apps.ContactsConfig",
-    "hosts.apps.HostsConfig",
 
+    # local apps
+
+    "pages",
+    "listings",
+    "accounts",
+    "contacts",
+    "hosts",
+
+    # 3rd party apps
     "django_browser_reload",
+    'debug_toolbar',
 
 ]
 
@@ -45,8 +57,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",  # browser reload
+    "debug_toolbar.middleware.DebugToolbarMiddleware",  # debug toolbar
 ]
+
+INTERNAL_IPS = ["127.0.0.1"]
 
 ROOT_URLCONF = 'djangorenteasy.urls'
 
@@ -71,15 +86,20 @@ WSGI_APPLICATION = 'djangorenteasy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.getenv('DATABASE_ENGINE'),
+#         'NAME': os.getenv('DATABASE_NAME'),
+#         'USER': os.getenv('DATABASE_USER'),
+#         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+#         'HOST': os.getenv('DATABASE_HOST'),
+#         'PORT': os.getenv('DATABASE_PORT'),
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'renteasy',
-        'USER': 'postgres',
-        'PASSWORD': 'snaiderel',
-        'HOST': 'localhost'
-    }
-}
+    'default': dj_database_url.parse(os.getenv('DATABASE_URL'))}  # External
+# database
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -147,3 +167,11 @@ JAZZMIN_SETTINGS = {
         {"name": "Home", "url": "index", "permissions": ["auth.view_user"]},
     ],
 }
+
+# Email settings
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')

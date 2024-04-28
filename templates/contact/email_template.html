@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Property Listing Inquiry</title>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+        <div class="md:flex">
+            <div class="p-8">
+                <h1 class="text-xl font-semibold text-gray-900">Hello {{ name }},</h1>
+                <p class="mt-2 text-gray-500">Thank you for your interest in our property listing {{ listing }} (ID: {{ listing_id }}).</p>
+                <p class="mt-2 text-gray-500">We have received your inquiry and will get back to you soon.</p>
+                <p class="mt-2 text-gray-500">Your message: {{ message }}</p>
+                <p class="mt-4">Best regards,</p>
+                <p>The RentEasy Team</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

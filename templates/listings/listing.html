@@ -105,7 +105,7 @@
                         </div>
 
                     </div>
-                                                                                                                                                 <div class="grid w-full p-2">
+                    <div class="grid w-full p-2">
                         <div
                                 class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8"
                         >
@@ -139,15 +139,15 @@
                                     <div>
                                         <ul class="list-none grid gap-2">
                                             <li class="text-gray-500 ">
-                                                 Price per night:
+                                                Price per night:
                                                 <span class="float-right">£ {{ listing.price | intcomma }}</span>
                                             </li>
                                             <li class="text-gray-500 ">
-                                                 Bedrooms:
+                                                Bedrooms:
                                                 <span class="float-right">{{ listing.bedrooms }}</span>
                                             </li>
                                             <li class="text-gray-500 ">
-                                                 Bathrooms:
+                                                Bathrooms:
                                                 <span class="float-right">{{ listing.bathrooms }}</span>
                                             </li>
                                         </ul>
@@ -206,7 +206,8 @@
                                                                    class="block mb-2 text-sm text-gray-700 font-medium ">Name
                                                                 <input type="text" name="name"
                                                                        id="name"
-                                                                       {% if user.is_authenticated %} value="{{ user.first_name }} {{ user.last_name }}" {% endif %} 
+                                                                        {% if user.is_authenticated %}
+                                                                       value="{{ user.first_name }} {{ user.last_name }}" {% endif %}
                                                                        class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
                                                                        required>
                                                             </label>
@@ -227,11 +228,12 @@
                                                             <div>
                                                                 <label for="email"
                                                                        class="block mb-2 text-sm text-gray-700 font-medium ">Email
-                                                                <input type="email" name="email"
-                                                                       id="hs-email-contacts-1" autocomplete="email"
-                                                                       class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
-                                                                        {% if user.is_authenticated %}
-                                                                       value="{{ user.email }}"  {% endif %} required>
+                                                                    <input type="email" name="email"
+                                                                           id="hs-email-contacts-1" autocomplete="email"
+                                                                           class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
+                                                                            {% if user.is_authenticated %}
+                                                                           value="{{ user.email }}"  {% endif %}
+                                                                           required>
                                                                 </label>
                                                             </div>
 
@@ -242,7 +244,7 @@
                                                                 <input type="text" name="phone"
                                                                        id="phone"
                                                                        class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
-                                                                        >
+                                                                >
                                                             </div>
                                                         </div>
                                                         <!-- End Grid -->

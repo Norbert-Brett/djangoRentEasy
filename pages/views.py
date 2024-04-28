@@ -1,8 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 from listings.models import Listing
-from hosts.models import Host
 
 
 def index(request):
@@ -16,11 +14,5 @@ def index(request):
 
 
 def about(request):
-    # Get all hosts
-    hosts = Host.objects.order_by('-host_since')
 
-    context = {
-        'hosts': hosts,
-    }
-
-    return render(request, 'pages/about.html', context)
+    return render(request, 'pages/about.html')
