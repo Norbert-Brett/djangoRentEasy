@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # 3rd party apps
     "django_browser_reload",
     'debug_toolbar',
+    'admin_honeypot',
 
 ]
 
