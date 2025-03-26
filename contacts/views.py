@@ -46,7 +46,6 @@ def contact(request):
         # If the user is authenticated
         if request.user.is_authenticated:
             # Check if the user has already made an inquiry for this listing
-            user_id = request.user.id
             has_contacted = Contact.objects.all().filter(listing_id=context['listing_id'], user_id=context['user_id'])
             if has_contacted:
                 # If the user has already made an inquiry, show an error message and redirect

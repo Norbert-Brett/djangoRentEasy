@@ -1,7 +1,6 @@
 import os
 import dj_database_url
 
-from pathlib import Path
 # Messages
 from django.contrib.messages import constants as messages
 
@@ -154,10 +153,6 @@ MESSAGE_TAGS = {
     messages.ERROR: 'warning'
 }
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
 
 # Jazzmin settings
 JAZZMIN_SETTINGS = {
