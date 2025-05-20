@@ -10,7 +10,7 @@ dependencies = [
     "charset-normalizer==3.3.2",
     "crispy-tailwind==1.0.3",
     "dj-database-url==2.3.0",
-    "django==4.2.20",
+    "django==4.2.21",
     "django-admin-honeypot-updated-2021~=1.2.0",
     "django-browser-reload==1.18.0",
     "django-cloudinary-storage~=0.3.0",
