@@ -20,7 +20,7 @@ crispy-tailwind==1.0.3
     # via djangorenteasy (pyproject.toml)
 dj-database-url==2.3.0
     # via djangorenteasy (pyproject.toml)
-django==4.2.20
+django==4.2.21
     # via
     #   djangorenteasy (pyproject.toml)
     #   crispy-tailwind
