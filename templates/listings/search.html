@@ -1,185 +1,507 @@
 {% extends 'base.html' %}
-
 {% load humanize %}
 
 {% block title %} | Search Results {% endblock %}
 
 {% block content %}
-     <!-- Breadcrumb -->
-    <div class="text-sm breadcrumbs p-6">
-        <ul>
-            <li>
-                <a href="{% url 'index' %}">
-                    <i class="bi bi-house-fill mr-2"></i> Home
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'listings' %}">
-                    Browse Listings
-                </a>
-            </li>
-            <li>
-      <a href="{% url 'search' %}" class="inline-flex gap-2 items-center ">Search Results
-      </a>
-            </li>
-        </ul>
+<div class="bg-gray-50 dark:bg-gray-900 min-h-screen">
+  <!-- Hero Section with Breadcrumb -->
+  <section class="relative py-12 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="search-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.5" />
+                </pattern>
+            </defs>
+            <rect width="100" height="100" fill="url(#search-grid)" />
+        </svg>
     </div>
-
-<section class="flex items-center py-6">
-    <div class="w-full max-w-screen-xl px-4 mx-auto lg:px-12">
-        <!-- Start coding here -->
-        <div class="relative overflow-hidden bg-slate-50 shadow-md md:rounded-2xl p-2">
-            <form action="{% url 'search' %}">
-                <div class="flex flex-col items-center justify-center p-2 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
-
-                    <div class="inline-flex flex-col gap-4 w-full rounded-md md:w-auto md:flex-row"
-                         role="group">
-                        
-                        <div class="mb-6">
-                            <label for="default-input"
-                                   class="block mb-2 text-sm font-medium text-gray-900 ">City</label>
-                            <input type="text" id="default-input" name="city" placeholder="London"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label for="default-input"
-                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
-                            <input type="text" id="default-input" name="country" placeholder="United Kingdom"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="default-input"
-                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bedrooms</label>
-                            <input type="text" id="default-input" name="bedrooms" placeholder="3"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label for="default-input"
-                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bathrooms</label>
-                            <input type="text" id="default-input" name="bathrooms" placeholder="3"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="default-input"
-                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                            <input type="text" id="default-input" name="price" placeholder="£200"
-                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                        </div>
-                        <button type="submit"
-                                class="mt-6 text-white btn btn-circle btn-primary">
-                            <i class="bi bi-search"></i>
-                            <span class="sr-only">Icon description</span>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</section>
-
-   
-
-    <!-- Listings -->
-    <section class="container mx-auto">
-     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-                {% if listings %}
-                    {% for listing in listings %}
-                        <div class="card shadow-lg">
-                            <a href="{% url 'listing' listing.id %}" class="relative block group overflow-hidden ">
-                                <img class="w-full aspect-[16/9] md:aspect-[27/17] object-cover group-hover:scale-105 transition duration-700 ease-out rounded-lg"
-                                     src="{{ listing.photo_main.url }}" alt="{{ listing.title }}">
-                            </a>
-
-                            <div class="mt-8 card-body">
-                                <div class="flex justify-between">
-                                    <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-teal-500 text-white">£ {{ listing.price | intcomma }}</span>
-                                    <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-600 text-white">{{ listing.category }}</span>
-                                </div>
-
-
-                                <h1 class="mt-4 card-title text-gray-800 ">
-                                    {{ listing.title }}
-                                </h1>
-
-                                <p class="mt-2 text-gray-500 ">
-                                    {{ listing.description | truncatewords:30 }}
-                                </p>
-
-                                <div class="flex items-center justify-between mt-4 card-actions">
-                                    <div>
-                                        <div class="text-lg font-medium text-gray-700 ">
-                                            {{ listing.city }}, {{ listing.country }}
-                                        </div>
-                                        <div class="flex gap-2 justify-between">
-                                            <p class="text-sm text-gray-500 ">{{ listing.bedrooms }}
-                                                Bedrooms</p>
-                                            <p class="text-sm text-gray-500 ">{{ listing.bathrooms }}
-                                                Bathrooms</p>
-                                        </div>
-                                        <p class="text-sm text-gray-500 "><i class="bi bi-clock"></i> {{ listing.list_date | timesince }} ago</p>
-                                    </div>
-
-                                    <a href="{% url 'listing' listing.id %}"
-                                       class="inline-block text-blue-500 underline hover:text-blue-400">More info</a>
-                                </div>
-
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <div class="prose">
-                        <p>No Listings Available</p>
-                    </div>
-                {% endif %}
-
-
-            </div>
-    </section>
     
-    <!-- Pagination -->
-    <nav aria-label="Page navigation" class="flex justify-center items-center mx-auto my-8">
-        {% if listings.has_other_pages %}
-            <ul class="join">
-                {% if listings.has_previous %}
-                    <li class="">
-                        <a href="?page={{ listings.previous_page_number }}"
-                           class="join-item btn btn-sm ">Previous</a>
-                    </li>
-                {% else %}
-                    <li>
-                        <a href="#"
-                           class="join-item btn btn-sm btn-disabled">Previous</a>
-                    </li>
-                {% endif %}
-                {% for i in listings.paginator.page_range %}
-                    {% if listings.number == i %}
-                        <li>
-                            <a
-                                    class="join-item btn btn-sm btn-active btn-primary">{{ i }}</a>
-                        </li>
-                    {% else %}
-                        <li>
-                            <a href="?page={{ i }}"
-                               class="join-item btn btn-sm">{{ i }}</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-                {% if listings.has_next %}
-                    <li>
-                        <a href="?page={{ listings.next_page_number }}" class="join-item btn btn-sm "
-                           >Next</a>
-                    </li>
-                {% else %}
-                    <li>
-                        <a class="join-item btn btn-sm btn-disabled"
-                               >Next</a>
-                    </li>
-                {% endif %}
-            </ul>
+    <!-- Floating Elements -->
+    <div class="absolute top-10 left-20 w-32 h-32 bg-blue-500/10 rounded-full blur-xl"></div>
+    <div class="absolute bottom-10 right-20 w-48 h-48 bg-purple-500/10 rounded-full blur-2xl"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Breadcrumb -->
+      <nav class="flex justify-center mb-8" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 md:space-x-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2">
+          <li class="inline-flex items-center">
+            <a href="{% url 'index' %}" class="inline-flex items-center text-sm font-medium text-white/80 hover:text-white transition-colors duration-200">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+              </svg>
+              Home
+            </a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <a href="{% url 'listings' %}" class="ml-1 text-sm font-medium text-white/80 hover:text-white transition-colors">Browse Listings</a>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <svg class="w-5 h-5 text-white/60" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="ml-1 text-sm font-medium text-white">Search Results</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Header -->
+      <div class="text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-white/10 text-white rounded-full mb-6">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          Search Results
+        </div>
+        
+        <h1 class="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+          {% if listings %}
+            {{ listings.paginator.count }} Properties Found
+          {% else %}
+            No Properties Found
+          {% endif %}
+        </h1>
+        
+        {% if request.GET.city or request.GET.country %}
+        <p class="text-xl text-gray-300 mb-8">
+          {% if request.GET.city %}in {{ request.GET.city }}{% endif %}
+          {% if request.GET.country %}{% if request.GET.city %}, {% endif %}{{ request.GET.country }}{% endif %}
+        </p>
         {% endif %}
-    </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advanced Search Form -->
+  <section class="py-8 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white flex items-center">
+            <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            Advanced Search
+          </h2>
+          <span class="text-sm text-gray-500 dark:text-gray-400">Find your perfect stay</span>
+        </div>
+        
+        <form action="{% url 'search' %}" method="get">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            <!-- City -->
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                City
+              </label>
+              <input type="text" name="city" placeholder="Where to?" 
+                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors" 
+                     value="{{ request.GET.city }}">
+            </div>
+            
+            <!-- Country -->
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Country
+              </label>
+              <input type="text" name="country" placeholder="Any country" 
+                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors" 
+                     value="{{ request.GET.country }}">
+            </div>
+
+            <!-- Bedrooms -->
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4"></path>
+                </svg>
+                Bedrooms
+              </label>
+              <select name="bedrooms" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors">
+                <option value="">Any</option>
+                <option value="1" {% if request.GET.bedrooms == '1' %}selected{% endif %}>1+ bedroom</option>
+                <option value="2" {% if request.GET.bedrooms == '2' %}selected{% endif %}>2+ bedrooms</option>
+                <option value="3" {% if request.GET.bedrooms == '3' %}selected{% endif %}>3+ bedrooms</option>
+                <option value="4" {% if request.GET.bedrooms == '4' %}selected{% endif %}>4+ bedrooms</option>
+              </select>
+            </div>
+            
+            <!-- Bathrooms -->
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+                </svg>
+                Bathrooms
+              </label>
+              <select name="bathrooms" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors">
+                <option value="">Any</option>
+                <option value="1" {% if request.GET.bathrooms == '1' %}selected{% endif %}>1+ bathroom</option>
+                <option value="2" {% if request.GET.bathrooms == '2' %}selected{% endif %}>2+ bathrooms</option>
+                <option value="3" {% if request.GET.bathrooms == '3' %}selected{% endif %}>3+ bathrooms</option>
+              </select>
+            </div>
+
+            <!-- Max Price -->
+            <div class="space-y-2">
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                </svg>
+                Max Price (per night)
+              </label>
+              <input type="number" name="price" placeholder="£500" 
+                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors" 
+                     value="{{ request.GET.price }}">
+            </div>
+          </div>
+          
+          <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <button type="submit" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors shadow-lg">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+              Search Properties
+            </button>
+            <a href="{% url 'search' %}" class="inline-flex items-center justify-center gap-2 px-8 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+              </svg>
+              Clear All
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Summary -->
+  <section class="py-6 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <div class="flex items-center space-x-4">
+          <div class="flex items-center space-x-2">
+            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+            <span class="text-lg font-semibold text-gray-900 dark:text-white">
+              {% if listings %}
+                {{ listings.paginator.count }} propert{{ listings.paginator.count|pluralize:"y,ies" }} found
+              {% else %}
+                No properties found
+              {% endif %}
+            </span>
+          </div>
+          {% if request.GET.city or request.GET.country or request.GET.bedrooms or request.GET.bathrooms or request.GET.price %}
+          <div class="hidden sm:flex items-center space-x-2">
+            <span class="text-sm text-gray-500 dark:text-gray-400">•</span>
+            <span class="text-sm text-gray-600 dark:text-gray-400">
+              Filtered results
+              {% if request.GET.city or request.GET.country %}
+                {% if request.GET.city %}in {{ request.GET.city }}{% endif %}
+                {% if request.GET.country %}{% if request.GET.city %}, {% endif %}{{ request.GET.country }}{% endif %}
+              {% endif %}
+            </span>
+          </div>
+          {% endif %}
+        </div>
+        
+        <!-- View Toggle -->
+        <div class="flex items-center space-x-3">
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300">View:</span>
+          <div class="flex bg-white dark:bg-gray-800 rounded-lg p-1 border border-gray-200 dark:border-gray-700">
+            <button class="px-3 py-1 text-sm font-medium bg-blue-500 text-white rounded-md transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+              </svg>
+            </button>
+            <button class="px-3 py-1 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 rounded-md transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Filters -->
+  <div class="container-modern pb-6">
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-modern p-6">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Quick filters:</span>
+        
+        <!-- Price Low to High -->
+        <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value }}&{% endif %}{% endfor %}sort=price_asc" 
+           class="px-4 py-2 {% if request.GET.sort == 'price_asc' %}bg-blue-500 text-white{% else %}bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300{% endif %} text-sm font-medium rounded-lg transition-colors">
+            <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+            Price: Low to High
+        </a>
+        
+        <!-- Price High to Low -->
+        <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value }}&{% endif %}{% endfor %}sort=price_desc" 
+           class="px-4 py-2 {% if request.GET.sort == 'price_desc' %}bg-blue-500 text-white{% else %}bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300{% endif %} text-sm font-medium rounded-lg transition-colors">
+            <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+            Price: High to Low
+        </a>
+        
+        <!-- Newest First -->
+        <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' %}{{ key }}={{ value }}&{% endif %}{% endfor %}sort=newest" 
+           class="px-4 py-2 {% if request.GET.sort == 'newest' or not request.GET.sort %}bg-blue-500 text-white{% else %}bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300{% endif %} text-sm font-medium rounded-lg transition-colors">
+            <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            Newest First
+        </a>
+        
+        <!-- Category Filter Dropdown -->
+        <div class="relative" x-data="{ open: false }">
+            <button @click="open = !open" class="px-4 py-2 {% if request.GET.category %}bg-blue-500 text-white{% else %}bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300{% endif %} text-sm font-medium rounded-lg transition-colors flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+                {% if request.GET.category %}{{ request.GET.category|title }}{% else %}Category{% endif %}
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            
+            <div x-show="open" @click.away="open = false" x-transition class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-10">
+                <div class="py-2">
+                    <a href="?{% for key, value in request.GET.items %}{% if key != 'category' %}{{ key }}={{ value }}&{% endif %}{% endfor %}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">All Categories</a>
+                    <a href="?{% for key, value in request.GET.items %}{% if key != 'category' %}{{ key }}={{ value }}&{% endif %}{% endfor %}category=trending" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Trending</a>
+                    <a href="?{% for key, value in request.GET.items %}{% if key != 'category' %}{{ key }}={{ value }}&{% endif %}{% endfor %}category=luxury" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Luxury</a>
+                    <a href="?{% for key, value in request.GET.items %}{% if key != 'category' %}{{ key }}={{ value }}&{% endif %}{% endfor %}category=farm" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Farm</a>
+                    <a href="?{% for key, value in request.GET.items %}{% if key != 'category' %}{{ key }}={{ value }}&{% endif %}{% endfor %}category=cabin" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Cabin</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Clear Filters -->
+        {% if request.GET.sort or request.GET.category %}
+        <a href="?{% for key, value in request.GET.items %}{% if key != 'sort' and key != 'category' %}{{ key }}={{ value }}&{% endif %}{% endfor %}" class="px-4 py-2 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 text-red-700 dark:text-red-300 text-sm font-medium rounded-lg transition-colors">
+            <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            Clear Filters
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Listings Grid -->
+  <section class="py-12 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {% if listings %}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for listing in listings %}
+        <article class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-700" data-aos="fade-up" data-aos-delay="{% cycle '100' '200' '300' %}">
+          <a href="{% url 'listing' listing.id %}" class="block">
+            <!-- Image Container -->
+            <div class="relative overflow-hidden">
+              <img src="{{ listing.photo_main.url }}" alt="{{ listing.title }}" 
+                  class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+              
+              <!-- Wishlist Button -->
+              <button class="absolute top-3 right-3 p-2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 rounded-full transition-colors">
+                <svg class="w-5 h-5 text-gray-600 dark:text-gray-400 hover:text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+              </button>
+              
+              <!-- Category Badge -->
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
+                  {{ listing.category|default:"Premium" }}
+                </span>
+              </div>
+
+              <!-- Price Badge -->
+              <div class="absolute bottom-3 left-3">
+                <span class="inline-flex items-center px-3 py-1 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-900 dark:text-white shadow-lg">
+                  £{{ listing.price|intcomma }}<span class="text-gray-500 dark:text-gray-400 ml-1">/ night</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="p-6">
+              <!-- Location & Rating -->
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  {{ listing.city }}, {{ listing.country }}
+                </div>
+                <div class="flex items-center space-x-1">
+                  <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                  <span class="text-sm font-medium text-gray-700 dark:text-gray-300">4.8</span>
+                </div>
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                {{ listing.title }}
+              </h3>
+
+              <!-- Description -->
+              <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                {{ listing.description|truncatewords:15 }}
+              </p>
+
+              <!-- Amenities -->
+              <div class="flex items-center space-x-4 mb-4 text-sm text-gray-500 dark:text-gray-400">
+                <div class="flex items-center">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4"></path>
+                  </svg>
+                  {{ listing.bedrooms }} bed{{ listing.bedrooms|pluralize }}
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+                  </svg>
+                  {{ listing.bathrooms }} bath{{ listing.bathrooms|pluralize }}
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                  </svg>
+                  {{ listing.guests }} guest{{ listing.guests|pluralize }}
+                </div>
+              </div>
+
+              <!-- Host Info -->
+              <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                <div class="flex items-center">
+                  <img src="{{ listing.host.photo.url }}" alt="{{ listing.host.name }}" class="w-8 h-8 rounded-full object-cover mr-3">
+                  <div>
+                    <p class="text-sm font-medium text-gray-900 dark:text-white">{{ listing.host.name }}</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Host</p>
+                  </div>
+                </div>
+                <div class="inline-flex items-center px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium rounded-lg group-hover:bg-blue-100 dark:group-hover:bg-blue-900/50 transition-colors duration-200">
+                  View Details
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <!-- Enhanced Empty State -->
+      <div class="text-center py-20">
+        <div class="w-32 h-32 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-full flex items-center justify-center mx-auto mb-8">
+          <svg class="w-16 h-16 text-blue-500 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">No Properties Found</h3>
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+          We couldn't find any properties matching your search criteria. Try adjusting your filters or explore our full collection of amazing stays.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="{% url 'listings' %}" class="inline-flex items-center gap-2 px-8 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors shadow-lg">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+            Browse All Properties
+          </a>
+          <a href="{% url 'search' %}" class="inline-flex items-center gap-2 px-8 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+            Clear Search
+          </a>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- Enhanced Pagination -->
+  {% if listings.has_other_pages %}
+  <section class="py-12 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Page navigation" class="flex justify-center">
+        <div class="flex items-center space-x-2">
+          {% if listings.has_previous %}
+          <a href="?page={{ listings.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" 
+             class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Previous
+          </a>
+          {% endif %}
+
+          <div class="flex items-center space-x-1">
+            {% for i in listings.paginator.page_range %}
+            {% if listings.number == i %}
+            <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-blue-500 rounded-lg">
+              {{ i }}
+            </span>
+            {% else %}
+            <a href="?page={{ i }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" 
+               class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+              {{ i }}
+            </a>
+            {% endif %}
+            {% endfor %}
+          </div>
+
+          {% if listings.has_next %}
+          <a href="?page={{ listings.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" 
+             class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+            Next
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          {% endif %}
+        </div>
+      </nav>
+      
+      <!-- Pagination Info -->
+      <div class="text-center mt-6">
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          Showing page {{ listings.number }} of {{ listings.paginator.num_pages }} 
+          ({{ listings.paginator.count }} total propert{{ listings.paginator.count|pluralize:"y,ies" }})
+        </p>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+</div>
 {% endblock %}

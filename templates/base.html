@@ -1,137 +1,278 @@
-{% load static %} {% load django_browser_reload %}
+{% load static %}
+{% load django_browser_reload %}
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  
-  <!-- SEO and Accessibility -->
-  <meta name="description" content="RentEasy - Find your perfect home away from home. Discover extraordinary accommodations around the world." />
-  <meta name="theme-color" content="#2563eb" />
-  
-  <!-- Preload critical fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- SEO and Accessibility -->
+    <meta
+      name="description"
+      content="RentEasy - Find your perfect home away from home. Discover extraordinary accommodations around the world."
+    />
 
-  <!-- Custom Theme System -->
-  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- TailwindCSS -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <!-- Custom Theme System -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-
-  <!-- Theme Configuration -->
-  <script>
-    // Theme system initialization
-    (function() {
-      const theme = localStorage.getItem('theme') || 
-                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
-
-  <title>RentEasy {% block title %}{% endblock %}</title>
-</head>
-
-<body class="font-inter antialiased tracking-tight relative">
-  <!-- Skip Link for Accessibility -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  <!-- NavBar -->
-  {% include 'partials/_navbar.html' %}
-  
-  <!-- Main Content -->
-  <main id="main-content" class="min-h-screen flex flex-col">
-    {% block content %} {% endblock %}
-  </main>
-
-  <!-- Footer -->
-  {% include 'partials/_footer.html' %} 
-  {% django_browser_reload_script %}
-
-  <!-- Scripts -->
-  <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
-  <script src="{% static 'js/main.js' %} "></script>
-  <script src="{% static 'js/theme.js' %} "></script>
-  <script src="//unpkg.com/alpinejs" defer></script>
-  <script src="{% static 'js/lightbox.min.js' %}"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    // Initialize AOS
-    AOS.init({
-      once: true,
-      disable: "phone",
-      duration: 500,
-      easing: "ease-out-cubic",
-    });
-
-    // Theme Toggle Functionality
-    function initThemeToggle() {
-      const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
-      const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-      const themeIconDesktop = document.getElementById('theme-icon-desktop');
-      const themeIconMobile = document.getElementById('theme-icon-mobile');
-      
-      function updateThemeIcon(theme) {
-        const iconClass = theme === 'dark' ? 'bi-moon-fill' : 'bi-sun-fill';
-        if (themeIconDesktop) {
-          themeIconDesktop.className = `bi ${iconClass}`;
-        }
-        if (themeIconMobile) {
-          themeIconMobile.className = `bi ${iconClass}`;
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                200: '#bae6fd',
+                300: '#7dd3fc',
+                400: '#38bdf8',
+                500: '#0ea5e9',
+                600: '#0284c7',
+                700: '#0369a1',
+                800: '#075985',
+                900: '#0c4a6e',
+                950: '#082f49'
+              },
+              secondary: {
+                50: '#f8fafc',
+                100: '#f1f5f9',
+                200: '#e2e8f0',
+                300: '#cbd5e1',
+                400: '#94a3b8',
+                500: '#64748b',
+                600: '#475569',
+                700: '#334155',
+                800: '#1e293b',
+                900: '#0f172a',
+                950: '#020617'
+              },
+              accent: {
+                50: '#fef7ff',
+                100: '#fceeff',
+                200: '#f8daff',
+                300: '#f2b8ff',
+                400: '#e879ff',
+                500: '#d946ef',
+                600: '#c026d3',
+                700: '#a21caf',
+                800: '#86198f',
+                900: '#701a75',
+                950: '#4a044e'
+              },
+              success: {
+                50: '#f0fdf4',
+                100: '#dcfce7',
+                200: '#bbf7d0',
+                300: '#86efac',
+                400: '#4ade80',
+                500: '#22c55e',
+                600: '#16a34a',
+                700: '#15803d',
+                800: '#166534',
+                900: '#14532d',
+                950: '#052e16'
+              },
+              warning: {
+                50: '#fffbeb',
+                100: '#fef3c7',
+                200: '#fde68a',
+                300: '#fcd34d',
+                400: '#fbbf24',
+                500: '#f59e0b',
+                600: '#d97706',
+                700: '#b45309',
+                800: '#92400e',
+                900: '#78350f',
+                950: '#451a03'
+              },
+              error: {
+                50: '#fef2f2',
+                100: '#fee2e2',
+                200: '#fecaca',
+                300: '#fca5a5',
+                400: '#f87171',
+                500: '#ef4444',
+                600: '#dc2626',
+                700: '#b91c1c',
+                800: '#991b1b',
+                900: '#7f1d1d',
+                950: '#450a0a'
+              }
+            },
+            fontFamily: {
+              'inter': ['Inter', 'sans-serif']
+            }
+          }
         }
       }
-      
-      function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    </script>
+
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    <script type="module"> import preline from https://cdn.jsdelivr.net/npm/preline@3.2.3/+esm </script>
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Theme Configuration -->
+    <script>
+      // Enhanced theme system initialization
+      (function () {
+        const savedTheme = localStorage.getItem("theme");
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        const theme = savedTheme || systemTheme;
         
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
+        document.documentElement.setAttribute("data-theme", theme);
         
-        // Announce theme change for screen readers
-        const announcement = `Theme changed to ${newTheme} mode`;
-        const announcer = document.createElement('div');
-        announcer.setAttribute('aria-live', 'polite');
-        announcer.setAttribute('aria-atomic', 'true');
-        announcer.className = 'sr-only';
-        announcer.textContent = announcement;
-        document.body.appendChild(announcer);
-        setTimeout(() => document.body.removeChild(announcer), 1000);
-      }
-      
-      // Initialize theme icon
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      updateThemeIcon(currentTheme);
-      
-      // Add event listeners
-      if (themeToggleDesktop) {
-        themeToggleDesktop.addEventListener('click', toggleTheme);
-      }
-      if (themeToggleMobile) {
-        themeToggleMobile.addEventListener('click', toggleTheme);
-      }
-      
-      // Listen for system theme changes
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-          const newTheme = e.matches ? 'dark' : 'light';
-          document.documentElement.setAttribute('data-theme', newTheme);
-          updateThemeIcon(newTheme);
+        // Add dark class for Tailwind CSS dark mode
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
         }
+      })();
+    </script>
+
+    <title>RentEasy {% block title %}{% endblock %}</title>
+  </head>
+
+  <body
+    class="font-inter antialiased tracking-tight relative"
+  >
+    <!-- NavBar -->
+    {% include 'partials/_navbar.html' %}
+
+    <!-- Main Content -->
+    <main id="main-content" class="min-h-screen flex flex-col">
+      {% block content %} {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    {% include 'partials/_footer.html' %} {% django_browser_reload_script %}
+
+    <!-- Scripts -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
+    <script src="{% static 'js/main.js' %} "></script>
+    <script src="{% static 'js/theme.js' %} "></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="{% static 'js/lightbox.min.js' %}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init({
+        once: true,
+        disable: "phone",
+        duration: 500,
+        easing: "ease-out-cubic",
       });
-    }
-    
-    // Initialize theme toggle when DOM is loaded
-    document.addEventListener('DOMContentLoaded', initThemeToggle);
-  </script>
-</body>
 
+      // Enhanced Theme Toggle Functionality
+      function initThemeToggle() {
+        const themeToggleDesktop = document.getElementById("theme-toggle-desktop");
+        const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+        const themeIconDesktop = document.getElementById("theme-icon-desktop");
+        const themeIconMobile = document.getElementById("theme-icon-mobile");
+
+        function updateThemeIcon(theme) {
+          const iconClass = theme === "dark" ? "bi-moon-fill" : "bi-sun-fill";
+          if (themeIconDesktop) {
+            themeIconDesktop.className = `bi ${iconClass}`;
+          }
+          if (themeIconMobile) {
+            themeIconMobile.className = `bi ${iconClass}`;
+          }
+        }
+
+        function updateBodyClass(theme) {
+          if (theme === "dark") {
+            document.body.classList.add("dark");
+            document.documentElement.classList.add("dark");
+          } else {
+            document.body.classList.remove("dark");
+            document.documentElement.classList.remove("dark");
+          }
+        }
+
+        function toggleTheme() {
+          const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
+          const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+          // Update theme attribute
+          document.documentElement.setAttribute("data-theme", newTheme);
+          
+          // Update body class for Tailwind dark mode
+          updateBodyClass(newTheme);
+          
+          // Save to localStorage
+          localStorage.setItem("theme", newTheme);
+          
+          // Update icons
+          updateThemeIcon(newTheme);
+
+          // Add visual feedback
+          const button = event.target.closest('button');
+          if (button) {
+            button.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+              button.style.transform = 'scale(1)';
+            }, 150);
+          }
+
+          // Announce theme change for screen readers
+          const announcement = `Theme changed to ${newTheme} mode`;
+          const announcer = document.createElement("div");
+          announcer.setAttribute("aria-live", "polite");
+          announcer.setAttribute("aria-atomic", "true");
+          announcer.className = "sr-only";
+          announcer.textContent = announcement;
+          document.body.appendChild(announcer);
+          setTimeout(() => document.body.removeChild(announcer), 1000);
+        }
+
+        // Initialize theme
+        const savedTheme = localStorage.getItem("theme");
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        const initialTheme = savedTheme || systemTheme;
+        
+        document.documentElement.setAttribute("data-theme", initialTheme);
+        updateBodyClass(initialTheme);
+        updateThemeIcon(initialTheme);
+
+        // Add event listeners
+        if (themeToggleDesktop) {
+          themeToggleDesktop.addEventListener("click", toggleTheme);
+        }
+        if (themeToggleMobile) {
+          themeToggleMobile.addEventListener("click", toggleTheme);
+        }
+
+        // Listen for system theme changes
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+          if (!localStorage.getItem("theme")) {
+            const newTheme = e.matches ? "dark" : "light";
+            document.documentElement.setAttribute("data-theme", newTheme);
+            updateBodyClass(newTheme);
+            updateThemeIcon(newTheme);
+          }
+        });
+      }
+
+      // Initialize theme toggle when DOM is loaded
+      document.addEventListener("DOMContentLoaded", initThemeToggle);
+    </script>
+  </body>
 </html>

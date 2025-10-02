@@ -7,8 +7,25 @@ from .models import Listing
 
 # Function to display the listings page
 def index(request):
-    # Get all listings ordered by list date
-    listings = Listing.objects.order_by('-list_date')
+    # Get all listings
+    listings = Listing.objects.filter(is_published=True)
+    
+    # Handle category filtering
+    if 'category' in request.GET:
+        category = request.GET.get('category')
+        if category:
+            listings = listings.filter(category__iexact=category)
+    
+    # Handle sorting
+    sort_option = request.GET.get('sort', 'newest')
+    if sort_option == 'price_asc':
+        listings = listings.order_by('price')
+    elif sort_option == 'price_desc':
+        listings = listings.order_by('-price')
+    elif sort_option == 'newest':
+        listings = listings.order_by('-list_date')
+    else:
+        listings = listings.order_by('-list_date')
 
     # Create a paginator object with 6 listings per page
     paginator = Paginator(listings, 6)
@@ -54,8 +71,8 @@ def listing(request, listing_id):
 
 # Function to handle search
 def search(request):
-    # Get all listings ordered by list date
-    listings = Listing.objects.order_by('-list_date')
+    # Get all published listings
+    listings = Listing.objects.filter(is_published=True)
 
     # Get distinct values for city, country, bedrooms, price, and bathrooms
     city_search = Listing.objects.values_list('city', flat=True).distinct()
@@ -89,9 +106,26 @@ def search(request):
         price = request.GET['price']
         if price:
             listings = listings.filter(price__lte=price)
+    
+    # Handle category filtering
+    if 'category' in request.GET:
+        category = request.GET.get('category')
+        if category:
+            listings = listings.filter(category__iexact=category)
+    
+    # Handle sorting
+    sort_option = request.GET.get('sort', 'newest')
+    if sort_option == 'price_asc':
+        listings = listings.order_by('price')
+    elif sort_option == 'price_desc':
+        listings = listings.order_by('-price')
+    elif sort_option == 'newest':
+        listings = listings.order_by('-list_date')
+    else:
+        listings = listings.order_by('-list_date')
 
-    # Create a paginator object with 3 listings per page
-    paginator = Paginator(listings, 3)
+    # Create a paginator object with 6 listings per page
+    paginator = Paginator(listings, 6)
     page = request.GET.get('page')
 
     try:

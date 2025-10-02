@@ -50,7 +50,7 @@
             <!-- Left Content -->
             <div class="text-center lg:text-left space-y-8" data-aos="fade-right">
                 <!-- Badge -->
-                <div class="badge badge-success backdrop-blur">
+                <div class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-green-100/90 dark:bg-green-900/90 text-green-800 dark:text-green-200 rounded-full backdrop-blur-md">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
@@ -75,7 +75,7 @@
 
                 <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="{% url 'listings' %}" class="btn btn-accent btn-lg">
+                    <a href="{% url 'listings' %}" class="inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition-colors shadow-lg">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
@@ -83,8 +83,8 @@
                         </svg>
                         Explore All Properties
                     </a>
-                    <a href="{% url 'about'}"
-                        class="btn btn-ghost btn-lg border-2 border-white/30 text-white hover:bg-white/10">
+                    <a href="{% url 'about' %}"
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium border-2 border-white/30 text-white rounded-lg hover:bg-white/10 transition-colors">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -155,29 +155,29 @@
                             alt="Beautiful modern property">
 
                         <!-- Floating Cards -->
-                        <div class="absolute top-6 left-6 card backdrop-blur">
-                            <div class="card-body p-4">
+                        <div class="absolute top-6 left-6 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden">
+                            <div class="p-4">
                                 <div class="flex items-center space-x-3">
-                                    <div class="w-12 h-12 bg-success-100 rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-success-600" fill="none" stroke="currentColor"
+                                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M5 13l4 4L19 7"></path>
                                         </svg>
                                     </div>
                                     <div>
-                                        <div class="font-semibold text-primary">Instant Booking</div>
-                                        <div class="text-sm text-secondary">Book now, stay tonight</div>
+                                        <div class="font-semibold text-gray-900 dark:text-white">Instant Booking</div>
+                                        <div class="text-sm text-gray-600 dark:text-gray-400">Book now, stay tonight</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="absolute bottom-6 right-6 card backdrop-blur">
-                            <div class="card-body p-4">
+                        <div class="absolute bottom-6 right-6 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden">
+                            <div class="p-4">
                                 <div class="flex items-center space-x-3">
-                                    <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor"
+                                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1">
@@ -185,8 +185,8 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <div class="font-semibold text-primary">Best Price</div>
-                                        <div class="text-sm text-secondary">Guaranteed lowest rates</div>
+                                        <div class="font-semibold text-gray-900 dark:text-white">Best Price</div>
+                                        <div class="text-sm text-gray-600 dark:text-gray-400">Guaranteed lowest rates</div>
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +210,7 @@
     </div>
 </section>
 <!-- Features Section -->
-<section class="py-16 bg-secondary">
+<section class="py-16 bg-white dark:bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Grid -->
         <div class="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
@@ -224,10 +224,10 @@
                 <div class="space-y-6 sm:space-y-8" data-aos="fade-left" data-aos-delay="100">
                     <!-- Title -->
                     <div class="space-y-4">
-                        <h2 class="font-bold text-3xl lg:text-4xl text-primary">
+                        <h2 class="font-bold text-3xl lg:text-4xl text-gray-900 dark:text-white">
                             We tackle the challenges renting platforms face
                         </h2>
-                        <p class="text-secondary text-lg">
+                        <p class="text-gray-600 dark:text-gray-400 text-lg">
                             Our platform is designed to provide a seamless experience for both hosts and guests. We
                             offer a range of features that make the process of listing, booking, and managing properties
                             easy and efficient.
@@ -238,43 +238,43 @@
                     <ul class="space-y-4">
                         <li class="flex items-start space-x-4">
                             <div
-                                class="flex-shrink-0 w-8 h-8 bg-success-100 rounded-full flex items-center justify-center">
-                                <i class="bi bi-check-lg text-success-600"></i>
+                                class="flex-shrink-0 w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
+                                <i class="bi bi-check-lg text-green-600 dark:text-green-400"></i>
                             </div>
-                            <span class="text-secondary">
-                                <span class="font-semibold text-primary">Instant</span> booking for immediate
+                            <span class="text-gray-600 dark:text-gray-400">
+                                <span class="font-semibold text-gray-900 dark:text-white">Instant</span> booking for immediate
                                 reservations
                             </span>
                         </li>
 
                         <li class="flex items-start space-x-4">
                             <div
-                                class="flex-shrink-0 w-8 h-8 bg-success-100 rounded-full flex items-center justify-center">
-                                <i class="bi bi-check-lg text-success-600"></i>
+                                class="flex-shrink-0 w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
+                                <i class="bi bi-check-lg text-green-600 dark:text-green-400"></i>
                             </div>
-                            <span class="text-secondary">
-                                Flexible <span class="font-semibold text-primary">Cancellation Policies</span> for peace
+                            <span class="text-gray-600 dark:text-gray-400">
+                                Flexible <span class="font-semibold text-gray-900 dark:text-white">Cancellation Policies</span> for peace
                                 of mind
                             </span>
                         </li>
 
                         <li class="flex items-start space-x-4">
                             <div
-                                class="flex-shrink-0 w-8 h-8 bg-success-100 rounded-full flex items-center justify-center">
-                                <i class="bi bi-check-lg text-success-600"></i>
+                                class="flex-shrink-0 w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
+                                <i class="bi bi-check-lg text-green-600 dark:text-green-400"></i>
                             </div>
-                            <span class="text-secondary">
-                                <span class="font-semibold text-primary">Exclusive Deals</span> and member discounts
+                            <span class="text-gray-600 dark:text-gray-400">
+                                <span class="font-semibold text-gray-900 dark:text-white">Exclusive Deals</span> and member discounts
                             </span>
                         </li>
 
                         <li class="flex items-start space-x-4">
                             <div
-                                class="flex-shrink-0 w-8 h-8 bg-success-100 rounded-full flex items-center justify-center">
-                                <i class="bi bi-check-lg text-success-600"></i>
+                                class="flex-shrink-0 w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
+                                <i class="bi bi-check-lg text-green-600 dark:text-green-400"></i>
                             </div>
-                            <span class="text-secondary">
-                                <span class="font-semibold text-primary">24/7 Support</span> whenever you need
+                            <span class="text-gray-600 dark:text-gray-400">
+                                <span class="font-semibold text-gray-900 dark:text-white">24/7 Support</span> whenever you need
                                 assistance
                             </span>
                         </li>
@@ -288,15 +288,15 @@
 
 
 <!-- Modern Listings Section -->
-<section class="py-16 bg-primary">
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-12">
             <div class="mb-6 sm:mb-0">
-                <h2 class="text-4xl font-bold text-primary mb-2">Latest Listings</h2>
-                <p class="text-lg text-secondary">Discover amazing places to stay around the world</p>
+                <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">Latest Listings</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400">Discover amazing places to stay around the world</p>
             </div>
-            <a href="{% url 'search' %}" class="btn btn-primary">
+            <a href="{% url 'search' %}" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition-colors shadow-sm">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -306,104 +306,69 @@
         </div>
 
         <!-- Listings Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
             {% if listings %}
             {% for listing in listings %}
-            <article class="card group" data-aos="fade-up" data-aos-delay="{% cycle '100' '200' '300' %}" <!-- Image
-                Container -->
-                <div class="relative overflow-hidden">
-                    <div class="aspect-w-16 aspect-h-10 bg-gray-200">
-                        <img src="{{ listing.photo_main.url }}" alt="{{ listing.title }}"
-                            class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-
-                    <!-- Price Badge -->
-                    <div class="absolute bottom-4 left-4">
-                        <span
-                            class="inline-flex items-center px-3 py-1 bg-white/95 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-900 shadow-lg">
-                            £{{ listing.price | intcomma }}<span class="text-gray-500 ml-1">/ night</span>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Card Content -->
-                <div class="card-body">
-                    <!-- Location -->
-                    <div class="flex items-center text-sm text-tertiary mb-2">
-                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        {{ listing.city }}, {{ listing.country }}
-                    </div>
-
-                    <!-- Title -->
-                    <h3
-                        class="text-xl font-bold text-primary mb-3 line-clamp-2 group-hover:text-primary-600 transition-colors duration-200">
-                        {{ listing.title }}
-                    </h3>
-
-                    <!-- Description -->
-                    <p class="text-secondary text-sm mb-4 line-clamp-2">
-                        {{ listing.description | truncatewords:20 }}
-                    </p>
-
-                    <!-- Amenities -->
-                    <div class="flex items-center space-x-4 mb-4 text-sm text-tertiary">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4"></path>
-                            </svg>
-                            {{ listing.bedrooms }} bed{{ listing.bedrooms|pluralize }}
-                        </div>
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
-                            </svg>
-                            {{ listing.bathrooms }} bath{{ listing.bathrooms|pluralize }}
+            <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay="{% cycle '100' '200' '300' %}">
+                <a href="{% url 'listing' listing.id %}" class="block">
+                    <!-- Image -->
+                    <div class="relative">
+                        <img src="{{ listing.photo_main.url }}" alt="{{ listing.title }}" class="aspect-square w-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        
+                        <!-- Wishlist Button -->
+                        <button class="absolute top-3 right-3 p-2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 rounded-full transition-colors">
+                            <i class="bi bi-heart text-gray-600 dark:text-gray-400 hover:text-rose-500"></i>
+                        </button>
+                        
+                        <!-- Category Badge -->
+                        <div class="absolute bottom-3 left-3">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">{{ listing.category }}</span>
                         </div>
                     </div>
-
-                    <!-- Host Info -->
-                    <div class="flex items-center justify-between pt-4 border-t border-primary">
-                        <div class="flex items-center">
-                            <img src="{{ listing.host.photo.url }}" alt="{{ listing.host.name }}"
-                                class="w-8 h-8 rounded-full object-cover mr-3">
-                            <div>
-                                <p class="text-sm font-medium text-primary">{{ listing.host.name }}</p>
-                                <p class="text-xs text-tertiary">Host</p>
+                    
+                    <!-- Content -->
+                    <div class="p-4 space-y-2">
+                        <!-- Location & Rating -->
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-semibold text-gray-900 dark:text-gray-100 text-sm line-clamp-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">{{ listing.city }}, {{ listing.country }}</h3>
+                            <div class="flex items-center space-x-1">
+                                <i class="bi bi-star-fill w-4 h-4 text-yellow-400"></i>
+                                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">4.8</span>
                             </div>
                         </div>
-                        <a href="{% url 'listing' listing.id %}" class="btn btn-secondary btn-sm">
-                            View Details
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg>
-                        </a>
+                        
+                        <!-- Property Details -->
+                        <p class="text-gray-500 dark:text-gray-400 text-sm">{{ listing.title|truncatechars:50 }}</p>
+                        
+                        <!-- Amenities -->
+                        <div class="flex items-center space-x-4 text-xs text-gray-500 dark:text-gray-400 mt-1">
+                            <span>{{ listing.bedrooms }} bed{{ listing.bedrooms|pluralize }}</span>
+                            <span>•</span>
+                            <span>{{ listing.bathrooms }} bath{{ listing.bathrooms|pluralize }}</span>
+                        </div>
+                        
+                        <!-- Price -->
+                        <div class="flex items-baseline space-x-1 mt-2">
+                            <span class="font-semibold text-gray-900 dark:text-gray-100 text-lg">£</span>
+                            <span class="font-semibold text-gray-900 dark:text-gray-100 text-lg">{{ listing.price|floatformat:0 }}</span>
+                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">night</span>
+                        </div>
                     </div>
-                </div>
-            </article>
+                </a>
+            </div>
             {% endfor %}
             {% else %}
             <!-- Empty State -->
             <div class="col-span-full flex flex-col items-center justify-center py-16">
-                <div class="w-24 h-24 bg-tertiary rounded-full flex items-center justify-center mb-4">
-                    <svg class="w-12 h-12 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-24 h-24 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-12 h-12 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
                         </path>
                     </svg>
                 </div>
-                <h3 class="text-xl font-semibold text-primary mb-2">No Listings Available</h3>
-                <p class="text-secondary text-center max-w-md">We're currently updating our listings. Please check back
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">No Listings Available</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-center max-w-md">We're currently updating our listings. Please check back
                     soon for amazing properties!</p>
             </div>
             {% endif %}
@@ -412,151 +377,156 @@
 </section>
 <!-- End Listings -->
 <!-- Start Team -->
-<section class="py-6  text-gray-800 ">
-    <div class="container p-4 mx-auto space-y-16 sm:p-10">
-        <div class="space-y-4" data-aos="fade-right">
-            <h3 class="text-2xl font-bold leading-none sm:text-5xl">Meet our team</h3>
-            <p class="max-w-2xl">Our team, a vibrant mix of tech enthusiasts, designers, and customer support
+<section class="py-20 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <div class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-200 rounded-full mb-4">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                Meet Our Team
+            </div>
+            <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                The People Behind Your Perfect Stay
+            </h2>
+            <p class="max-w-4xl text-gray-600 dark:text-gray-400 aling-self-center mx-auto">Our team, a vibrant mix of tech enthusiasts, designers, and customer support
                 experts, is driven by a shared goal to enhance the travel and accommodation experience. We blend
                 innovation with practicality, focusing on creating a platform that’s both powerful and easy to use.
                 From developing cutting-edge features to providing top-notch service, every team member plays a
                 crucial role in delivering an exceptional service that connects people and places seamlessly. United
                 by a passion for travel, we're dedicated to making every journey unforgettable.</p>
         </div>
-        <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4" data-aos="fade-up"
-            data-aos-delay="100">
-            <div class="card text-center">
-                <div class="card-body">
-                    <img alt="David Forren - Founder and CEO"
-                        class="w-32 h-32 mx-auto mb-4 object-cover rounded-full shadow-lg"
-                        src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D">
-                    <h4 class="text-xl font-semibold text-primary">David Forren</h4>
-                    <p class="text-sm text-secondary mb-4">Founder / CEO</p>
+        <!-- Team Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" data-aos="fade-up" data-aos-delay="100">
+            <!-- Team Member 1 -->
+            <div class="group" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-rose-200 dark:hover:border-rose-800">
+                    <div class="relative mb-6">
+                        <img alt="David Forren - Founder and CEO"
+                            class="w-24 h-24 mx-auto object-cover rounded-full shadow-lg group-hover:scale-105 transition-transform duration-300"
+                            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D">
+                        <div class="absolute -bottom-2 -right-2 w-6 h-6 bg-green-500 rounded-full border-2 border-white dark:border-gray-800"></div>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-1">David Forren</h4>
+                    <p class="text-rose-600 dark:text-rose-400 font-medium mb-3">Founder & CEO</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                        Visionary leader with 10+ years in hospitality tech, passionate about creating seamless travel experiences.
+                    </p>
                     <div class="flex justify-center space-x-3">
-                        <a rel="noopener noreferrer" href="#" title="Twitter">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor"
-                                class="w-4 h-4">
-                                <path
-                                    d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z">
-                                </path>
+                        <a href="#" class="p-2 text-gray-400 hover:text-rose-500 transition-colors duration-200" title="Twitter">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                             </svg>
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
-                                class="w-4 h-4">
-                                <path
-                                    d="M8.268 28h-5.805v-18.694h5.805zM5.362 6.756c-1.856 0-3.362-1.538-3.362-3.394s1.505-3.362 3.362-3.362 3.362 1.505 3.362 3.362c0 1.856-1.506 3.394-3.362 3.394zM29.994 28h-5.792v-9.1c0-2.169-0.044-4.95-3.018-4.95-3.018 0-3.481 2.356-3.481 4.794v9.256h-5.799v-18.694h5.567v2.55h0.081c0.775-1.469 2.668-3.019 5.492-3.019 5.875 0 6.955 3.869 6.955 8.894v10.269z">
-                                </path>
+                        <a href="#" class="p-2 text-gray-400 hover:text-rose-500 transition-colors duration-200" title="LinkedIn">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
-                                class="w-4 h-4">
-                                <path
-                                    d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z">
-                                </path>
+                        <a href="#" class="p-2 text-gray-400 hover:text-rose-500 transition-colors duration-200" title="GitHub">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="space-y-4">
-                <img alt="" class="object-cover sm:size-48 lg:size-60 mx-auto mb-4 bg-center rounded-xl "
-                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D">
-                <div class="flex flex-col items-center">
-                    <h4 class="text-xl font-semibold">Delia Pawelke</h4>
-                    <p class="text-sm ">Project Manager</p>
-                    <div class="flex mt-2 space-x-2">
-                        <a rel="noopener noreferrer" href="#" title="Twitter">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor"
-                                class="w-4 h-4">
-                                <path
-                                    d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z">
-                                </path>
+            <!-- Team Member 2 -->
+            <div class="group" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-rose-200 dark:hover:border-rose-800">
+                    <div class="relative mb-6">
+                        <img alt="Delia Pawelke - Project Manager"
+                            class="w-24 h-24 mx-auto object-cover rounded-full shadow-lg group-hover:scale-105 transition-transform duration-300"
+                            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D">
+                        <div class="absolute -bottom-2 -right-2 w-6 h-6 bg-blue-500 rounded-full border-2 border-white dark:border-gray-800"></div>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Delia Pawelke</h4>
+                    <p class="text-rose-600 dark:text-rose-400 font-medium mb-3">Project Manager</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                        Expert project coordinator ensuring seamless delivery of features and exceptional user experiences.
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="p-2 text-gray-400 hover:text-rose-500 transition-colors duration-200" title="Twitter">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                             </svg>
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
-                                class="w-4 h-4">
-                                <path
-                                    d="M8.268 28h-5.805v-18.694h5.805zM5.362 6.756c-1.856 0-3.362-1.538-3.362-3.394s1.505-3.362 3.362-3.362 3.362 1.505 3.362 3.362c0 1.856-1.506 3.394-3.362 3.394zM29.994 28h-5.792v-9.1c0-2.169-0.044-4.95-3.018-4.95-3.018 0-3.481 2.356-3.481 4.794v9.256h-5.799v-18.694h5.567v2.55h0.081c0.775-1.469 2.668-3.019 5.492-3.019 5.875 0 6.955 3.869 6.955 8.894v10.269z">
-                                </path>
+                        <a href="#" class="p-2 text-gray-400 hover:text-rose-500 transition-colors duration-200" title="LinkedIn">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
-                                class="w-4 h-4">
-                                <path
-                                    d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z">
-                                </path>
+                        <a href="#" class="p-2 text-gray-400 hover:text-rose-500 transition-colors duration-200" title="GitHub">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="space-y-4">
-                <img alt="" class="object-cover sm:size-48 lg:size-60 mx-auto mb-4 bg-center rounded-xl "
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBvcnRyYWl0fGVufDB8fDB8fHww">
-                <div class="flex flex-col items-center">
-                    <h4 class="text-xl font-semibold">Leroy Jenkins</h4>
-                    <p class="text-sm ">Director of sales</p>
-                    <div class="flex mt-2 space-x-2">
-                        <a rel="noopener noreferrer" href="#" title="Twitter">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor"
-                                class="w-4 h-4">
-                                <path
-                                    d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z">
-                                </path>
+
+            <!-- Team Member 3 -->
+            <div class="group" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-rose-200 dark:hover:border-rose-800">
+                    <div class="relative mb-6">
+                        <img alt="Leroy Jenkins - Director of Sales"
+                            class="w-24 h-24 mx-auto object-cover rounded-full shadow-lg group-hover:scale-105 transition-transform duration-300"
+                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBvcnRyYWl0fGVufDB8fDB8fHww">
+                        <div class="absolute -bottom-2 -right-2 w-6 h-6 bg-purple-500 rounded-full border-2 border-white dark:border-gray-800"></div>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Leroy Jenkins</h4>
+                    <p class="text-rose-600 dark:text-rose-400 font-medium mb-3">Director of Sales</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                        Strategic sales leader driving growth and building lasting partnerships with property owners worldwide.
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="p-2 text-gray-400 hover:text-rose-500 transition-colors duration-200" title="Twitter">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                             </svg>
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
-                                class="w-4 h-4">
-                                <path
-                                    d="M8.268 28h-5.805v-18.694h5.805zM5.362 6.756c-1.856 0-3.362-1.538-3.362-3.394s1.505-3.362 3.362-3.362 3.362 1.505 3.362 3.362c0 1.856-1.506 3.394-3.362 3.394zM29.994 28h-5.792v-9.1c0-2.169-0.044-4.95-3.018-4.95-3.018 0-3.481 2.356-3.481 4.794v9.256h-5.799v-18.694h5.567v2.55h0.081c0.775-1.469 2.668-3.019 5.492-3.019 5.875 0 6.955 3.869 6.955 8.894v10.269z">
-                                </path>
+                        <a href="#" class="p-2 text-gray-400 hover:text-rose-500 transition-colors duration-200" title="LinkedIn">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
-                                class="w-4 h-4">
-                                <path
-                                    d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z">
-                                </path>
+                        <a href="#" class="p-2 text-gray-400 hover:text-rose-500 transition-colors duration-200" title="GitHub">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="space-y-4">
-                <img alt="" class="object-cover sm:size-48 lg:size-60 mx-auto mb-4 bg-center rounded-xl "
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBvcnRyYWl0fGVufDB8fDB8fHww">
-                <div class="flex flex-col items-center">
-                    <h4 class="text-xl font-semibold">Sophia Harrington</h4>
-                    <p class="text-sm ">Support Consultant</p>
-                    <div class="flex mt-2 space-x-2">
-                        <a rel="noopener noreferrer" href="#" title="Twitter">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="currentColor"
-                                class="w-4 h-4">
-                                <path
-                                    d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z">
-                                </path>
+
+            <!-- Team Member 4 -->
+            <div class="group" data-aos="fade-up" data-aos-delay="400">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-rose-200 dark:hover:border-rose-800">
+                    <div class="relative mb-6">
+                        <img alt="Sophia Harrington - Support Consultant"
+                            class="w-24 h-24 mx-auto object-cover rounded-full shadow-lg group-hover:scale-105 transition-transform duration-300"
+                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBvcnRyYWl0fGVufDB8fDB8fHww">
+                        <div class="absolute -bottom-2 -right-2 w-6 h-6 bg-orange-500 rounded-full border-2 border-white dark:border-gray-800"></div>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Sophia Harrington</h4>
+                    <p class="text-rose-600 dark:text-rose-400 font-medium mb-3">Support Consultant</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                        Dedicated support specialist ensuring every guest receives exceptional service and assistance 24/7.
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="p-2 text-gray-400 hover:text-rose-500 transition-colors duration-200" title="Twitter">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                             </svg>
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
-                                class="w-4 h-4">
-                                <path
-                                    d="M8.268 28h-5.805v-18.694h5.805zM5.362 6.756c-1.856 0-3.362-1.538-3.362-3.394s1.505-3.362 3.362-3.362 3.362 1.505 3.362 3.362c0 1.856-1.506 3.394-3.362 3.394zM29.994 28h-5.792v-9.1c0-2.169-0.044-4.95-3.018-4.95-3.018 0-3.481 2.356-3.481 4.794v9.256h-5.799v-18.694h5.567v2.55h0.081c0.775-1.469 2.668-3.019 5.492-3.019 5.875 0 6.955 3.869 6.955 8.894v10.269z">
-                                </path>
+                        <a href="#" class="p-2 text-gray-400 hover:text-rose-500 transition-colors duration-200" title="LinkedIn">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
                         </a>
-                        <a rel="noopener noreferrer" href="#" title="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32"
-                                class="w-4 h-4">
-                                <path
-                                    d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.009-1.385-0.015-2.719-4.453 0.964-5.391-2.151-5.391-2.151-0.729-1.844-1.781-2.339-1.781-2.339-1.448-0.989 0.115-0.968 0.115-0.968 1.604 0.109 2.448 1.645 2.448 1.645 1.427 2.448 3.744 1.74 4.661 1.328 0.14-1.031 0.557-1.74 1.011-2.135-3.552-0.401-7.287-1.776-7.287-7.907 0-1.751 0.62-3.177 1.645-4.297-0.177-0.401-0.719-2.031 0.141-4.235 0 0 1.339-0.427 4.4 1.641 1.281-0.355 2.641-0.532 4-0.541 1.36 0.009 2.719 0.187 4 0.541 3.043-2.068 4.381-1.641 4.381-1.641 0.859 2.204 0.317 3.833 0.161 4.235 1.015 1.12 1.635 2.547 1.635 4.297 0 6.145-3.74 7.5-7.296 7.891 0.556 0.479 1.077 1.464 1.077 2.959 0 2.14-0.020 3.864-0.020 4.385 0 0.416 0.28 0.916 1.104 0.755 6.4-2.093 10.979-8.093 10.979-15.156 0-8.833-7.161-16-16-16z">
-                                </path>
+                        <a href="#" class="p-2 text-gray-400 hover:text-rose-500 transition-colors duration-200" title="GitHub">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
                         </a>
                     </div>
@@ -570,18 +540,27 @@
 <!-- Features -->
 
 <!-- Testimonials -->
-<div class="overflow-hidden ">
-    <div class="relative max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <!-- Title -->
-        <div class="max-w-2xl w-3/4 lg:w-1/2 mb-6 sm:mb-10 md:mb-16" data-aos="fade-right">
-            <h2 class="text-2xl sm:text-3xl lg:text-4xl  font-semibold">
-                Loved by business and individuals across the globe
+<section class="py-20 bg-white dark:bg-gray-800 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-16" data-aos="fade-up">
+            <div class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full mb-4">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                </svg>
+                What Our Guests Say
+            </div>
+            <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                Loved by Travelers Worldwide
             </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                Join thousands of satisfied guests who have discovered their perfect stays through our platform. Real stories from real travelers.
+            </p>
         </div>
-        <!-- End Title -->
 
         <!-- Grid -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up">
+        <!-- Testimonials Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <!-- Card -->
             <div class="flex h-auto">
                 <div class="flex flex-col bg-slate-50 rounded-xl">
@@ -692,84 +671,164 @@
         </div>
         <!-- End Grid -->
 
-        <!-- Grid -->
-        <div class="mt-20 grid gap-6 grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:gap-8" data-aos="fade-left">
-            <!-- Stats -->
-            <div>
-                <h4 class="text-lg sm:text-xl font-semibold text-gray-800 ">Guests Served</h4>
-                <p class="mt-2 sm:mt-3 text-4xl sm:text-6xl font-bold text-primary">Over 1 million</p>
-                <p class="mt-1 text-gray-500">guests served</p>
+        <!-- Stats Section -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8 lg:p-12" data-aos="fade-up" data-aos-delay="400">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                    Trusted by Travelers Worldwide
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                    Join millions who have found their perfect stays through our platform
+                </p>
             </div>
-            <!-- End Stats -->
+            
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Stat 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2">1M+</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Happy Guests</div>
+                </div>
 
-            <!-- Stats -->
-            <div>
-                <h4 class="text-lg sm:text-xl font-semibold text-gray-800 ">Total Reviews</h4>
-                <p class="mt-2 sm:mt-3 text-4xl sm:text-6xl font-bold text-primary">250,000+</p>
-                <p class="mt-1 text-gray-500">reviews posted</p>
-            </div>
-            <!-- End Stats -->
+                <!-- Stat 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2">250K+</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">5-Star Reviews</div>
+                </div>
 
-            <!-- Stats -->
-            <div>
-                <h4 class="text-lg sm:text-xl font-semibold text-gray-800 ">Number of
-                    Superhosts</h4>
-                <p class="mt-2 sm:mt-3 text-4xl sm:text-6xl font-bold text-primary">500+</p>
-                <p class="mt-1 text-gray-500">Superhosts ready to welcome you</p>
+                <!-- Stat 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <div class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2">500+</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Superhosts</div>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-orange-100 dark:bg-orange-900 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-2">50+</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Countries</div>
+                </div>
             </div>
-            <!-- End Stats -->
         </div>
         <!-- End Grid -->
 
-        <!-- SVG Element -->
-        <div class="absolute bottom-0 end-0 transform lg:translate-x-32" aria-hidden="true">
-            <svg class="w-40 h-auto sm:w-72" width="1115" height="636" viewBox="0 0 1115 636" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M0.990203 279.321C-1.11035 287.334 3.68307 295.534 11.6966 297.634L142.285 331.865C150.298 333.965 158.497 329.172 160.598 321.158C162.699 313.145 157.905 304.946 149.892 302.845L33.8132 272.418L64.2403 156.339C66.3409 148.326 61.5475 140.127 53.5339 138.026C45.5204 135.926 37.3213 140.719 35.2207 148.733L0.990203 279.321ZM424.31 252.289C431.581 256.26 440.694 253.585 444.664 246.314C448.635 239.044 445.961 229.931 438.69 225.96L424.31 252.289ZM23.0706 296.074C72.7581 267.025 123.056 230.059 187.043 212.864C249.583 196.057 325.63 198.393 424.31 252.289L438.69 225.96C333.77 168.656 249.817 164.929 179.257 183.892C110.144 202.465 54.2419 243.099 7.92943 270.175L23.0706 296.074Z"
-                    fill="currentColor" class="fill-orange-500"></path>
-                <path
-                    d="M451.609 382.417C446.219 388.708 446.95 398.178 453.241 403.567L555.763 491.398C562.054 496.788 571.524 496.057 576.913 489.766C582.303 483.474 581.572 474.005 575.281 468.615L484.15 390.544L562.222 299.413C567.612 293.122 566.881 283.652 560.59 278.263C554.299 272.873 544.829 273.604 539.44 279.895L451.609 382.417ZM837.202 559.655C841.706 566.608 850.994 568.593 857.947 564.09C864.9 559.586 866.885 550.298 862.381 543.345L837.202 559.655ZM464.154 407.131C508.387 403.718 570.802 395.25 638.136 410.928C704.591 426.401 776.318 465.66 837.202 559.655L862.381 543.345C797.144 442.631 718.724 398.89 644.939 381.709C572.033 364.734 504.114 373.958 461.846 377.22L464.154 407.131Z"
-                    fill="currentColor" class="fill-cyan-500"></path>
-                <path
-                    d="M447.448 0.194357C439.203 -0.605554 431.87 5.43034 431.07 13.6759L418.035 148.045C417.235 156.291 423.271 163.623 431.516 164.423C439.762 165.223 447.095 159.187 447.895 150.942L459.482 31.5025L578.921 43.0895C587.166 43.8894 594.499 37.8535 595.299 29.6079C596.099 21.3624 590.063 14.0296 581.818 13.2297L447.448 0.194357ZM1086.03 431.727C1089.68 439.166 1098.66 442.239 1106.1 438.593C1113.54 434.946 1116.62 425.96 1112.97 418.521L1086.03 431.727ZM434.419 24.6572C449.463 42.934 474.586 81.0463 521.375 116.908C568.556 153.07 637.546 187.063 742.018 200.993L745.982 171.256C646.454 157.985 582.444 125.917 539.625 93.0974C496.414 59.978 474.537 26.1903 457.581 5.59138L434.419 24.6572ZM742.018 200.993C939.862 227.372 1054.15 366.703 1086.03 431.727L1112.97 418.521C1077.85 346.879 956.138 199.277 745.982 171.256L742.018 200.993Z"
-                    fill="currentColor" class="fill-white"></path>
-            </svg>
-        </div>
+        
         <!-- End SVG Element -->
     </div>
 </div>
 <!-- End Testimonials -->
 
-<!-- Newsletter -->
-<div class=" px-4 py-10 sm:px-6 lg:px-8 lg:py-16 mx-auto dark:bg-slate-800 text-gray-800 dark:text-gray-200 ">
-    <div class="grid md:grid-cols-2 gap-8">
-        <div class="max-w-md" data-aos="fade-right">
-            <h2 class="text-2xl font-bold md:text-3xl md:leading-tight ">Subscribe</h2>
-            <p class="mt-3 ">
-                Subscribe and start making the most of every engagement.
+<!-- CTA Section -->
+<section class="py-20 bg-gradient-to-br from-rose-500 via-rose-600 to-pink-600 relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="cta-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.5" />
+                </pattern>
+            </defs>
+            <rect width="100" height="100" fill="url(#cta-grid)" />
+        </svg>
+    </div>
+    
+    <!-- Floating Elements -->
+    <div class="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+    <div class="absolute bottom-10 right-10 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+    <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-white/10 rounded-full blur-lg"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <div class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-white/20 text-white rounded-full mb-6">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                Stay Updated
+            </div>
+            <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+                Ready to Start Your Journey?
+            </h2>
+            <p class="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
+                Join thousands of travelers who get exclusive deals, travel tips, and early access to new destinations. Your next adventure is just one click away.
             </p>
         </div>
 
-        <form data-aos="fade-left">
-            <div class="w-full sm:max-w-lg md:ms-auto">
-                <div class="flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
-                    <div class="w-full">
-                        <label for="hero-input" class="sr-only">Search</label>
-                        <input type="text" id="hero-input" name="hero-input"
-                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
-                            placeholder="Enter your email">
+        <div class="max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            <form class="space-y-4">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="flex-1">
+                        <label for="email" class="sr-only">Email address</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full px-6 py-4 text-gray-900 bg-white rounded-xl border-0 shadow-lg focus:ring-4 focus:ring-white/25 focus:outline-none placeholder-gray-500 text-lg"
+                            placeholder="Enter your email address">
                     </div>
-                    <a class="btn btn-secondary w-full sm:w-auto" href="#">
-                        Subscribe
-                    </a>
+                    <button type="submit"
+                        class="px-8 py-4 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 whitespace-nowrap">
+                        Get Started
+                    </button>
                 </div>
-                <p class="mt-3 text-sm text-gray-500">
-                    No spam, unsubscribe at any time
+                <p class="text-center text-white/80 text-sm">
+                    ✨ No spam, unsubscribe at any time. Join 50,000+ happy travelers!
                 </p>
+            </form>
+        </div>
+
+        <!-- CTA Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16" data-aos="fade-up" data-aos-delay="300">
+            <div class="text-center">
+                <div class="text-3xl font-bold text-white mb-2">50K+</div>
+                <div class="text-white/80 text-sm">Newsletter Subscribers</div>
             </div>
-        </form>
+            <div class="text-center">
+                <div class="text-3xl font-bold text-white mb-2">1M+</div>
+                <div class="text-white/80 text-sm">Bookings Made</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-bold text-white mb-2">4.9★</div>
+                <div class="text-white/80 text-sm">Average Rating</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-bold text-white mb-2">24/7</div>
+                <div class="text-white/80 text-sm">Customer Support</div>
+            </div>
+        </div>
+
+        <!-- Additional CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-12" data-aos="fade-up" data-aos-delay="400">
+            <a href="{% url 'listings' %}" 
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-rose-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors shadow-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                Browse Properties
+            </a>
+            <a href="{% url 'about' %}" 
+                class="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-rose-600 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Learn More
+            </a>
+        </div>
     </div>
-</div>
-<!-- End Subscribe -->
+</section>
+<!-- End CTA Section -->
 {% endblock %}
