@@ -1,305 +1,1030 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load humanize %} {% block title %} | {{
+listing.title }} {% endblock %} {% block content %}
+<div class="bg-gray-50 dark:bg-gray-900 min-h-screen">
+  <!-- Hero Section with Breadcrumb -->
+  <section
+    class="relative py-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-hidden"
+  >
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <svg
+        class="w-full h-full"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern
+            id="listing-grid"
+            width="10"
+            height="10"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 10 0 L 0 0 0 10"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="0.5"
+            />
+          </pattern>
+        </defs>
+        <rect width="100" height="100" fill="url(#listing-grid)" />
+      </svg>
+    </div>
 
-{% load humanize %}
+    <!-- Floating Elements -->
+    <div
+      class="absolute top-10 left-20 w-32 h-32 bg-blue-500/10 rounded-full blur-xl"
+    ></div>
+    <div
+      class="absolute bottom-10 right-20 w-48 h-48 bg-purple-500/10 rounded-full blur-2xl"
+    ></div>
 
-{% block title %} | {{ listing.title }} {% endblock %}
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Breadcrumb -->
+      <nav class="flex justify-center mb-6" aria-label="Breadcrumb">
+        <ol
+          class="inline-flex items-center space-x-1 md:space-x-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2"
+        >
+          <li class="inline-flex items-center">
+            <a
+              href="{% url 'index' %}"
+              class="inline-flex items-center text-sm font-medium text-white/80 hover:text-white transition-colors duration-200"
+            >
+              <svg
+                class="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                ></path>
+              </svg>
+              Home
+            </a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <svg
+                class="w-5 h-5 text-white/60"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <a
+                href="{% url 'listings' %}"
+                class="ml-1 text-sm font-medium text-white/80 hover:text-white transition-colors"
+                >Browse Listings</a
+              >
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <svg
+                class="w-5 h-5 text-white/60"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <span class="ml-1 text-sm font-medium text-white"
+                >Property Details</span
+              >
+            </div>
+          </li>
+        </ol>
+      </nav>
 
-{% block content %}
-    <main class=" text-gray-800 ">
-        <section class="container mx-auto py-16">
-            <!-- Breadcrumb -->
-            <nav class="flex px-6 py-4 breadcrumbs" aria-label="Breadcrumb">
-                <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-                    <li class="inline-flex items-center">
-                        <a href="{% url 'index' %}"
-                           class="inline-flex items-center text-sm font-medium hover:text-blue-600 ">
-                            <i class="bi bi-house-fill mx-2"></i>
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <div class="flex items-center">
-                            <a class="ms-1 text-sm font-medium md:ms-2 hover:text-blue-600 ">Browse
-                                Listings</a>
-                        </div>
-                    </li>
-                </ol>
-            </nav>
-            <!-- Alerts -->
-            {% include 'partials/_alerts.html' %}
-            <!-- Listing -->
-            <section class="py-5">
-                <div class="container mx-auto">
-                    <div class=" text-center">
-                        <div class="grid md:grid-col-2">
-                            <h1 class="text-primary text-4xl font-bold py-2">{{ listing.title }}</h1>
-                            <p class="py-2 text-lg">
-                                <i class="bi bi-geo-alt-fill text-secondary mx-2"></i> {{ listing.city }}
-                                , {{ listing.country }}
-                            </p>
-                        </div>
-                    </div>
+      <!-- Property Header -->
+      <div class="text-center">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-white/10 text-white rounded-full mb-4"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+            ></path>
+          </svg>
+          {{ listing.category|default:"Premium Property" }}
+        </div>
+
+        <h1
+          class="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight"
+        >
+          {{ listing.title }}
+        </h1>
+
+        <div
+          class="flex items-center justify-center space-x-6 text-gray-300 mb-6"
+        >
+          <div class="flex items-center">
+            <svg
+              class="w-5 h-5 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              ></path>
+            </svg>
+            {{ listing.city }}, {{ listing.country }}
+          </div>
+          <div class="flex items-center">
+            <svg
+              class="w-5 h-5 mr-2 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              />
+            </svg>
+            4.8 (24 reviews)
+          </div>
+          <div class="flex items-center">
+            <span class="text-2xl font-bold text-white"
+              >£{{ listing.price|intcomma }}</span
+            >
+            <span class="text-gray-400 ml-1">/ night</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alerts -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 relative z-20">
+    {% include 'partials/_alerts.html' %}
+  </div>
+
+  <!-- Image Gallery -->
+  <section class="py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-4 gap-4 rounded-2xl overflow-hidden"
+      >
+        <!-- Main Image -->
+        <div class="lg:col-span-2 lg:row-span-2">
+          <div
+            class="relative h-96 lg:h-full group cursor-pointer"
+            onclick="openLightbox(0)"
+          >
+            <img
+              src="{{ listing.photo_main.url }}"
+              alt="{{ listing.title }}"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div
+              class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"
+            ></div>
+            <div class="absolute bottom-4 left-4">
+              <span
+                class="inline-flex items-center px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-gray-900"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                View All Photos
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary Images -->
+        {% if listing.photo_1 %}
+        <div
+          class="relative h-48 group cursor-pointer"
+          onclick="openLightbox(1)"
+        >
+          <img
+            src="{{ listing.photo_1.url }}"
+            alt="{{ listing.title }}"
+            class="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+          />
+          <div
+            class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg"
+          ></div>
+        </div>
+        {% endif %} {% if listing.photo_2 %}
+        <div
+          class="relative h-48 group cursor-pointer"
+          onclick="openLightbox(2)"
+        >
+          <img
+            src="{{ listing.photo_2.url }}"
+            alt="{{ listing.title }}"
+            class="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+          />
+          <div
+            class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg"
+          ></div>
+        </div>
+        {% endif %} {% if listing.photo_3 %}
+        <div
+          class="relative h-48 group cursor-pointer"
+          onclick="openLightbox(3)"
+        >
+          <img
+            src="{{ listing.photo_3.url }}"
+            alt="{{ listing.title }}"
+            class="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+          />
+          <div
+            class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg"
+          ></div>
+        </div>
+        {% endif %} {% if listing.photo_4 %}
+        <div
+          class="relative h-48 group cursor-pointer"
+          onclick="openLightbox(4)"
+        >
+          <img
+            src="{{ listing.photo_4.url }}"
+            alt="{{ listing.title }}"
+            class="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+          />
+          <div
+            class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-lg"
+          ></div>
+          {% if listing.photo_5 or listing.photo_6 %}
+          <div
+            class="absolute inset-0 bg-black/50 flex items-center justify-center rounded-lg"
+          >
+            <span class="text-white text-lg font-semibold">
+              +{% if listing.photo_5 and listing.photo_6 %}2{% else %}1{% endif
+              %} more
+            </span>
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Left Column - Property Details -->
+        <div class="lg:col-span-2 space-y-8">
+          <!-- Property Overview -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6"
+          >
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              Property Overview
+            </h2>
+
+            <!-- Amenities Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+              <div
+                class="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
+              >
+                <div
+                  class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center"
+                >
+                  <svg
+                    class="w-5 h-5 text-blue-600 dark:text-blue-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4"
+                    ></path>
+                  </svg>
                 </div>
-            </section>
-
-
-            <!-- Listing -->
-            <div class=" p-6 w-full mx-auto">
-
-                <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mx-auto">
-                    <div class="lg:col-span-2">
-                        <img src="{{ listing.photo_main.url }}" alt="{{ listing.title }}"
-                             class="w-full h-auto object-cover mb-3">
-                        <div class="carousel carousel-center rounded-box mb-5 w-fit">
-                            {% if listing.photo_1 %}
-                                <div class="carousel-item">
-                                    <div data-lightbox="home-images">
-                                        <img src="{{ listing.photo_1.url }}" alt="{{ listing.title }}"
-                                             class="w-full h-48 object-cover">
-                                    </div>
-                                </div>
-                            {% endif %}
-                            {% if listing.photo_2 %}
-                                <div class="carousel-item">
-                                    <div data-lightbox="home-images">
-                                        <img src="{{ listing.photo_2.url }}" alt="{{ listing.title }}"
-                                             class="w-full h-48 object-cover">
-                                    </div>
-                                </div>
-                            {% endif %}
-                            {% if listing.photo_3 %}
-                                <div class="carousel-item">
-                                    <div data-lightbox="home-images">
-                                        <img src="{{ listing.photo_3.url }}" alt="{{ listing.title }}"
-                                             class="w-full h-48 object-cover">
-                                    </div>
-                                </div>
-                            {% endif %}
-                            {% if listing.photo_4 %}
-                                <div class="carousel-item">
-                                    <div data-lightbox="home-images">
-                                        <img src="{{ listing.photo_4.url }}" alt="{{ listing.title }}"
-                                             class="w-full h-48 object-cover">
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {% if listing.photo_5 %}
-                                <div class="carousel-item">
-                                    <div data-lightbox="home-images">
-                                        <img src="{{ listing.photo_5.url }}" alt="{{ listing.title }}"
-                                             class="w-full h-48 object-cover">
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            {% if listing.photo_6 %}
-                                <div class="carousel-item">
-                                    <div data-lightbox="home-images">
-                                        <img src="{{ listing.photo_6.url }}" alt="{{ listing.title }}"
-                                             class="w-full h-48 object-cover">
-                                    </div>
-                                </div>
-                            {% endif %}
-                            <!-- Repeat for other photos -->
-                        </div>
-
-                    </div>
-                    <div class="grid w-full p-2">
-                        <div
-                                class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8"
-                        >
-  <span
-          class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
-  ></span>
-
-                            <div class="sm:flex sm:justify-between sm:gap-4">
-                                <div>
-                                    <h3 class="text-lg font-bold sm:text-xl">
-                                        Your Host
-                                    </h3>
-
-                                    <p class="mt-1 text-xs font-medium "> {{ listing.host.name }}</p>
-                                    <p class="mt-1 text-xs font-medium "> {{ listing.host.description }}</p>
-                                </div>
-
-                                <div class="hidden sm:block sm:shrink-0">
-                                    <div class="avatar">
-                                        <div class="w-16 rounded-full">
-                                            <img src="{{ listing.host.photo.url }}" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mt-6">
-                                <div class="text-pretty text-sm ">
-                                    <!-- Fields -->
-
-                                    <div>
-                                        <ul class="list-none grid gap-2">
-                                            <li class="text-gray-500 ">
-                                                Price per night:
-                                                <span class="float-right">£ {{ listing.price | intcomma }}</span>
-                                            </li>
-                                            <li class="text-gray-500 ">
-                                                Bedrooms:
-                                                <span class="float-right">{{ listing.bedrooms }}</span>
-                                            </li>
-                                            <li class="text-gray-500 ">
-                                                Bathrooms:
-                                                <span class="float-right">{{ listing.bathrooms }}</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- Description -->
-                                    <div class="my-5">
-                                        <h3 class="text-2xl font-bold">Description</h3>
-                                        <p class="py-2">{{ listing.description }}</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="mt-6 flex gap-4 sm:gap-6">
-                                <div class="flex flex-col-reverse">
-                                    <dt class="text-sm font-medium">Published</dt>
-                                    <dd class="text-xs ">{{ listing.list_date |date:"d M Y" }}</dd>
-                                </div>
-
-                                <div class="flex flex-col-reverse">
-                                    <dt class="text-sm font-medium ">Time since</dt>
-                                    <dd class="text-xs ">{{ listing.list_date | naturaltime }}</dd>
-                                </div>
-                            </div>
-
-                            <div class="mt-6">
-                                <!-- Contact Host Button -->
-                                <button class="btn-modern btn-modern-primary w-full" onclick="document.getElementById('contact_modal').showModal()">
-                                    <i class="bi bi-chat-dots mr-2"></i>
-                                    Contact Host
-                                </button>
-                                
-                                <!-- Modern Modal -->
-                                <dialog id="contact_modal" class="modal-modern">
-                                    <div class="modal-content-modern">
-                                        <!-- Modal Header -->
-                                        <div class="modal-header-modern">
-                                            <h3 class="modal-title-modern">Contact Host</h3>
-                                            <button class="modal-close-modern" onclick="document.getElementById('contact_modal').close()">
-                                                <i class="bi bi-x-lg"></i>
-                                            </button>
-                                        </div>
-                                        
-                                        <!-- Modal Body -->
-                                        <div class="modal-body-modern">
-                                            <div class="flex items-center space-x-4 mb-6 p-4 bg-gray-50 rounded-lg">
-                                                <img src="{{ listing.host.photo.url }}" alt="{{ listing.host.name }}" class="avatar avatar-md">
-                                                <div>
-                                                    <h4 class="font-semibold text-gray-900">{{ listing.host.name }}</h4>
-                                                    <p class="text-sm text-gray-600">Host since 2020</p>
-                                                </div>
-                                            </div>
-
-                                            <form action="{% url 'contact' %}" method="POST" class="form-modern">
-                                                {% csrf_token %}
-                                                {% if user.is_authenticated %}
-                                                    <input type="hidden" name="user_id" value="{{ user.id }}">
-                                                {% else %}
-                                                    <input type="hidden" name="user_id" value="0">
-                                                {% endif %}
-                                                <input type="hidden" name="host_email" value="{{ listing.host.email }}">
-                                                <input type="hidden" name="listing_id" value="{{ listing.id }}">
-                                                
-                                                <div class="form-group-modern">
-                                                    <label for="name" class="form-label-modern">Your Name</label>
-                                                    <input type="text" name="name" id="name" 
-                                                           {% if user.is_authenticated %}value="{{ user.first_name }} {{ user.last_name }}"{% endif %}
-                                                           class="form-input-modern" required>
-                                                </div>
-                                                
-                                                <div class="form-group-modern">
-                                                    <label for="email" class="form-label-modern">Email Address</label>
-                                                    <input type="email" name="email" id="email" 
-                                                           {% if user.is_authenticated %}value="{{ user.email }}"{% endif %}
-                                                           class="form-input-modern" required>
-                                                </div>
-                                                
-                                                <div class="form-group-modern">
-                                                    <label for="listing" class="form-label-modern">Property</label>
-                                                    <input type="text" name="listing" id="listing" 
-                                                           value="{{ listing.title }}" 
-                                                           class="form-input-modern bg-gray-50" readonly>
-                                                </div>
-
-                                                            <div>
-                                                                <label for="phone"
-                                                                       class="block mb-2 text-sm text-gray-700 font-medium ">Phone
-                                                                    Number</label>
-                                                                <input type="text" name="phone"
-                                                                       id="phone"
-                                                                       class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none "
-                                                                >
-                                                
-                                                <div class="form-group-modern">
-                                                    <label for="phone" class="form-label-modern">Phone Number (Optional)</label>
-                                                    <input type="tel" name="phone" id="phone" class="form-input-modern">
-                                                </div>
-                                                
-                                                <div class="form-group-modern">
-                                                    <label for="message" class="form-label-modern">Message</label>
-                                                    <textarea id="message" name="message" rows="4" 
-                                                              class="form-textarea-modern" 
-                                                              placeholder="Hi, I'm interested in your property. Is it available for the dates I need?"></textarea>
-                                                </div>
-                                        </div>
-                                        
-                                        <!-- Modal Footer -->
-                                        <div class="modal-footer-modern">
-                                            <button type="button" class="btn-modern btn-modern-secondary" onclick="document.getElementById('contact_modal').close()">
-                                                Cancel
-                                            </button>
-                                            <button type="submit" class="btn-modern btn-modern-primary">
-                                                <i class="bi bi-send mr-2"></i>
-                                                Send Message
-                                            </button>
-                                        </div>
-                                        </form>
-                                    </div>
-                                </dialog>
-                            </div>
-                        </div>
-                    </div>
-
+                <div>
+                  <p class="text-sm font-medium text-gray-900 dark:text-white">
+                    {{ listing.bedrooms }}
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                    Bedroom{{ listing.bedrooms|pluralize }}
+                  </p>
                 </div>
+              </div>
+
+              <div
+                class="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
+              >
+                <div
+                  class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center"
+                >
+                  <svg
+                    class="w-5 h-5 text-green-600 dark:text-green-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-gray-900 dark:text-white">
+                    {{ listing.bathrooms }}
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                    Bathroom{{ listing.bathrooms|pluralize }}
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
+              >
+                <div
+                  class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center"
+                >
+                  <svg
+                    class="w-5 h-5 text-purple-600 dark:text-purple-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-gray-900 dark:text-white">
+                    {{ listing.guests }}
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                    Guest{{ listing.guests|pluralize }}
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
+              >
+                <div
+                  class="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center"
+                >
+                  <svg
+                    class="w-5 h-5 text-orange-600 dark:text-orange-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4v10m6-10v10m-6 0h6"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-gray-900 dark:text-white">
+                    Premium
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                    Category
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <section class="py-20  text-gray-800  ">
-                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div class=" rounded-2xl p-8 xl:p-11">
-                        <h2 class="font-manrope text-4xl text-center font-bold mb-4">Subscribe to the latest offer
-                        </h2>
-                        <p class=" text-center mb-11 max-lg:max-w-2xl mx-auto">Join our community of subscribers
-                            and receive regular
-                            updates delivered straight to your inbox. It's quick, easy, and free</p>
-                        <div
-                                class="max-w-md mx-auto lg:bg-transparent lg:border border-gray-300 rounded-3xl max-lg:py-3 lg:rounded-full lg:h-12 lg:p-1.5 lg:flex-row gap-6 lg:gap-0 flex-col flex items-center justify-between">
-                            <label>
-                                <input type="text" name="email"
-                                       class="py-2 px-6 bg-transparent rounded-full max-lg:border border-gray-300  text-gray-100 max-lg:text-center placeholder:text-gray-400 focus:outline-none flex-1 w-full lg:w-auto lg:py-2 lg:px-6 lg:bg-transparent"
-                                       placeholder="Enter your email..">
-                            </label>
-                            <button type="submit"
-                                    class="py-2 px-5 btn btn-primary rounded-full">Subscribe
-                            </button>
-                        </div>
-                    </div>
+            <!-- Description -->
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+              <h3
+                class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+              >
+                About this place
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                {{ listing.description }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Host Information -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6"
+          >
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              Meet Your Host
+            </h2>
+
+            <div class="flex items-start space-x-4">
+              <img
+                src="{{ listing.host.photo.url }}"
+                alt="{{ listing.host.name }}"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+              <div class="flex-1">
+                <div class="flex items-center space-x-3 mb-2">
+                  <h3
+                    class="text-lg font-semibold text-gray-900 dark:text-white"
+                  >
+                    {{ listing.host.name }}
+                  </h3>
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200"
+                  >
+                    Verified Host
+                  </span>
                 </div>
-            </section>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  {{ listing.host.description }}
+                </p>
 
+                <div
+                  class="flex items-center space-x-6 text-sm text-gray-500 dark:text-gray-400"
+                >
+                  <div class="flex items-center">
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4v10m6-10v10m-6 0h6"
+                      ></path>
+                    </svg>
+                    Host since 2020
+                  </div>
+                  <div class="flex items-center">
+                    <svg
+                      class="w-4 h-4 mr-1 text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      />
+                    </svg>
+                    4.9 rating
+                  </div>
+                  <div class="flex items-center">
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                      ></path>
+                    </svg>
+                    Fast response
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        </section>
-    </main>
+          <!-- Property Details -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6"
+          >
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              Property Details
+            </h2>
 
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div
+                class="flex justify-between items-center py-3 border-b border-gray-200 dark:border-gray-700"
+              >
+                <span class="text-gray-600 dark:text-gray-400"
+                  >Property ID</span
+                >
+                <span class="font-medium text-gray-900 dark:text-white"
+                  >#{{ listing.id }}</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center py-3 border-b border-gray-200 dark:border-gray-700"
+              >
+                <span class="text-gray-600 dark:text-gray-400">Listed</span>
+                <span class="font-medium text-gray-900 dark:text-white"
+                  >{{ listing.list_date|date:"M d, Y" }}</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center py-3 border-b border-gray-200 dark:border-gray-700"
+              >
+                <span class="text-gray-600 dark:text-gray-400"
+                  >Available from</span
+                >
+                <span class="font-medium text-gray-900 dark:text-white"
+                  >{{ listing.date_from|date:"M d, Y" }}</span
+                >
+              </div>
+              <div
+                class="flex justify-between items-center py-3 border-b border-gray-200 dark:border-gray-700"
+              >
+                <span class="text-gray-600 dark:text-gray-400"
+                  >Available until</span
+                >
+                <span class="font-medium text-gray-900 dark:text-white"
+                  >{{ listing.date_to|date:"M d, Y" }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column - Booking Card -->
+        <div class="lg:col-span-1">
+          <div class="sticky top-8">
+            <div
+              class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6"
+            >
+              <!-- Price Header -->
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <div class="flex items-baseline space-x-2">
+                    <span
+                      class="text-3xl font-bold text-gray-900 dark:text-white"
+                      >£{{ listing.price|intcomma }}</span
+                    >
+                    <span class="text-gray-500 dark:text-gray-400"
+                      >/ night</span
+                    >
+                  </div>
+                  <div class="flex items-center mt-1">
+                    <svg
+                      class="w-4 h-4 text-yellow-400 mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      />
+                    </svg>
+                    <span
+                      class="text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >4.8</span
+                    >
+                    <span class="text-sm text-gray-500 dark:text-gray-400 ml-1"
+                      >(24 reviews)</span
+                    >
+                  </div>
+                </div>
+                <button
+                  class="p-2 text-gray-400 hover:text-red-500 transition-colors"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Contact Form -->
+              <div class="space-y-4">
+                <button
+                  class="w-full flex justify-center items-center gap-2 py-3 px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg"
+                  onclick="document.getElementById('contact_modal').showModal()"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                    ></path>
+                  </svg>
+                  Contact Host
+                </button>
+
+                <div class="flex space-x-3">
+                  <button
+                    class="flex-1 flex justify-center items-center gap-2 py-3 px-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                  >
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"
+                      ></path>
+                    </svg>
+                    Share
+                  </button>
+                  <button
+                    class="flex-1 flex justify-center items-center gap-2 py-3 px-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                  >
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                      ></path>
+                    </svg>
+                    Save
+                  </button>
+                </div>
+              </div>
+
+              <!-- Additional Info -->
+              <div
+                class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700"
+              >
+                <div
+                  class="flex items-center justify-center text-sm text-gray-500 dark:text-gray-400"
+                >
+                  <svg
+                    class="w-4 h-4 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                    ></path>
+                  </svg>
+                  Your booking is protected
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Modal -->
+  <div
+    id="contact_modal"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4"
+  >
+    <div
+      class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto"
+    >
+      <!-- Modal Header -->
+      <div
+        class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700"
+      >
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+          Contact Host
+        </h3>
+        <button
+          onclick="closeModal()"
+          class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6">
+        <!-- Host Info -->
+        <div
+          class="flex items-center space-x-4 mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg"
+        >
+          <img
+            src="{{ listing.host.photo.url }}"
+            alt="{{ listing.host.name }}"
+            class="w-12 h-12 rounded-full object-cover"
+          />
+          <div>
+            <h4 class="font-semibold text-gray-900 dark:text-white">
+              {{ listing.host.name }}
+            </h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Host since 2020
+            </p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <form action="{% url 'contact' %}" method="POST" class="space-y-4">
+          {% csrf_token %} {% if user.is_authenticated %}
+          <input type="hidden" name="user_id" value="{{ user.id }}" />
+          {% else %}
+          <input type="hidden" name="user_id" value="0" />
+          {% endif %}
+          <input
+            type="hidden"
+            name="host_email"
+            value="{{ listing.host.email }}"
+          />
+          <input type="hidden" name="listing_id" value="{{ listing.id }}" />
+
+          <div class="space-y-2">
+            <label
+              for="name"
+              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >Your Name</label
+            >
+            <input
+              type="text"
+              name="name"
+              id="name"
+              {%
+              if
+              user.is_authenticated
+              %}value="{{ user.first_name }} {{ user.last_name }}"
+              {%
+              endif
+              %}
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              required
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label
+              for="email"
+              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              name="email"
+              id="email"
+              {%
+              if
+              user.is_authenticated
+              %}value="{{ user.email }}"
+              {%
+              endif
+              %}
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              required
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label
+              for="listing"
+              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >Property</label
+            >
+            <input
+              type="text"
+              name="listing"
+              id="listing"
+              value="{{ listing.title }}"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-600 text-gray-900 dark:text-white"
+              readonly
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label
+              for="phone"
+              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >Phone Number (Optional)</label
+            >
+            <input
+              type="tel"
+              name="phone"
+              id="phone"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label
+              for="message"
+              class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+              >Message</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none"
+              placeholder="Hi, I'm interested in your property. Is it available for the dates I need?"
+              required
+            ></textarea>
+          </div>
+
+          <!-- Modal Footer -->
+          <div class="flex space-x-3 pt-4">
+            <button
+              type="button"
+              onclick="closeModal()"
+              class="flex-1 py-3 px-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="flex-1 flex justify-center items-center gap-2 py-3 px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                ></path>
+              </svg>
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsletter Section -->
+  <section
+    class="py-16 bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 relative overflow-hidden"
+  >
+    <!-- Background Elements -->
+    <div class="absolute inset-0 opacity-10">
+      <svg
+        class="w-full h-full"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern
+            id="newsletter-grid"
+            width="10"
+            height="10"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 10 0 L 0 0 0 10"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="0.5"
+            />
+          </pattern>
+        </defs>
+        <rect width="100" height="100" fill="url(#newsletter-grid)" />
+      </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+      <div data-aos="fade-up">
+        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+          Stay Updated with Latest Properties
+        </h2>
+        <p class="text-xl text-white/90 max-w-2xl mx-auto mb-8 leading-relaxed">
+          Join our community and receive notifications about new properties,
+          special offers, and travel tips delivered straight to your inbox.
+        </p>
+
+        <div class="max-w-md mx-auto">
+          <div
+            class="flex flex-col sm:flex-row gap-3 bg-white/10 backdrop-blur-md rounded-2xl p-2"
+          >
+            <input
+              type="email"
+              placeholder="Enter your email address"
+              class="flex-1 px-4 py-3 bg-white/20 border-0 rounded-xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
+            />
+            <button
+              class="px-6 py-3 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-100 transition-colors"
+            >
+              Subscribe
+            </button>
+          </div>
+          <p class="text-white/70 text-sm mt-3">
+            No spam, unsubscribe at any time
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- JavaScript for Modal and Lightbox -->
+<script>
+  function openModal() {
+    document.getElementById("contact_modal").classList.remove("hidden");
+    document.getElementById("contact_modal").classList.add("flex");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    document.getElementById("contact_modal").classList.add("hidden");
+    document.getElementById("contact_modal").classList.remove("flex");
+    document.body.style.overflow = "auto";
+  }
+
+  function openLightbox(index) {
+    // Lightbox functionality can be implemented here
+    console.log("Opening lightbox for image:", index);
+  }
+
+  // Close modal when clicking outside
+  document
+    .getElementById("contact_modal")
+    .addEventListener("click", function (e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+</script>
 
 {% endblock %}
