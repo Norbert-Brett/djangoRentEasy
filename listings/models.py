@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
 
 from hosts.models import Host
 from listings.validators import allow_only_images_validator
@@ -30,3 +31,17 @@ class Listing(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class SavedListing(models.Model):
+    """Model to store user-saved listings"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='saved_listings')
+    listing = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name='saved_by')
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        unique_together = ('user', 'listing')
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return f"{self.user.username} saved {self.listing.title}"

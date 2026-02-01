@@ -8,39 +8,40 @@
 
 /* CSS Variables for Theme System */
 :root {
-  --color-primary: #0ea5e9;
-  --color-primary-dark: #0284c7;
-  --color-secondary: #64748b;
-  --color-secondary-dark: #475569;
-  --color-accent: #d946ef;
-  --color-accent-dark: #c026d3;
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-background: #ffffff;
-  --color-surface: #f8fafc;
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #64748b;
-  --color-text-tertiary: #94a3b8;
-  --color-border: #e2e8f0;
+  --color-primary: #0D9488;
+  --color-primary-dark: #0F766E;
+  --color-secondary: #4B5563;
+  --color-secondary-dark: #374151;
+  --color-accent: #6366F1;
+  /* Indigo accent instead of purple */
+  --color-accent-dark: #4F46E5;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-background: #FBFCFD;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
+  --color-text-tertiary: #9CA3AF;
+  --color-border: #E5E7EB;
 }
 
 [data-theme="dark"] {
-  --color-primary: #38bdf8;
-  --color-primary-dark: #0ea5e9;
-  --color-secondary: #94a3b8;
-  --color-secondary-dark: #cbd5e1;
-  --color-accent: #e879ff;
-  --color-accent-dark: #d946ef;
-  --color-success: #4ade80;
-  --color-warning: #fbbf24;
-  --color-error: #f87171;
-  --color-background: #0f172a;
-  --color-surface: #1e293b;
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #cbd5e1;
-  --color-text-tertiary: #94a3b8;
-  --color-border: #334155;
+  --color-primary: #2DD4BF;
+  --color-primary-dark: #0D9488;
+  --color-secondary: #9CA3AF;
+  --color-secondary-dark: #D1D5DB;
+  --color-accent: #818CF8;
+  --color-accent-dark: #6366F1;
+  --color-success: #34D399;
+  --color-warning: #FBBF24;
+  --color-error: #F87171;
+  --color-background: #0B0F1A;
+  --color-surface: #1F2937;
+  --color-text-primary: #F9FAFB;
+  --color-text-secondary: #D1D5DB;
+  --color-text-tertiary: #9CA3AF;
+  --color-border: #374151;
 }
 
 /* Base Styles */
@@ -60,7 +61,7 @@ body {
 }
 
 .btn-accent {
-  @apply bg-rose-500 text-white hover:bg-rose-600 focus:ring-rose-500;
+  @apply bg-indigo-500 text-white hover:bg-indigo-600 focus:ring-indigo-500;
 }
 
 .btn-outline {
@@ -260,7 +261,9 @@ nav * {
 }
 
 /* Form Styles */
-input, textarea, select {
+input,
+textarea,
+select {
   @apply bg-white border border-secondary-300 text-secondary-900 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
 }
 
@@ -271,7 +274,12 @@ input, textarea, select {
 }
 
 /* Smooth transitions for all interactive elements */
-button, a, .btn, input, textarea, select {
+button,
+a,
+.btn,
+input,
+textarea,
+select {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -310,6 +318,7 @@ button, a, .btn, input, textarea, select {
   white-space: nowrap;
   border: 0;
 }
+
 /* Additional Theme Utilities */
 .text-gradient-primary {
   @apply bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent;
@@ -400,7 +409,9 @@ button, a, .btn, input, textarea, select {
 [data-theme="dark"] .backdrop-blur-card {
   background-color: rgba(30, 41, 59, 0.85);
   border: 1px solid rgba(51, 65, 85, 0.3);
-}/*
+}
+
+/*
  ===== AIRBNB-STYLE COMPONENTS ===== */
 
 /* Modern Card Components */
@@ -454,31 +465,31 @@ button, a, .btn, input, textarea, select {
 
 /* Modern Button System */
 .btn-modern {
-  @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
 }
 
 .btn-modern-primary {
-  @apply bg-rose-500 text-white hover:bg-rose-600 focus:ring-rose-500 shadow-sm;
+  @apply bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500 shadow-sm hover:shadow-emerald-500/20;
 }
 
 .btn-modern-secondary {
-  @apply bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-gray-500 shadow-sm;
+  @apply bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 focus:ring-slate-500 shadow-sm;
 }
 
 [data-theme="dark"] .btn-modern-secondary {
-  @apply bg-gray-800 text-gray-300 border-gray-600 hover:bg-gray-700;
+  @apply bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700;
 }
 
 .btn-modern-ghost {
-  @apply bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-500;
+  @apply bg-transparent text-slate-700 hover:bg-slate-100 focus:ring-slate-500;
 }
 
 [data-theme="dark"] .btn-modern-ghost {
-  @apply text-gray-300 hover:bg-gray-800;
+  @apply text-slate-300 hover:bg-slate-800;
 }
 
 .btn-modern-outline {
-  @apply bg-transparent border-2 border-rose-500 text-rose-500 hover:bg-rose-500 hover:text-white focus:ring-rose-500;
+  @apply bg-transparent border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white focus:ring-emerald-500;
 }
 
 /* Badge System */
@@ -622,7 +633,7 @@ button, a, .btn, input, textarea, select {
 }
 
 .search-bar-button {
-  @apply p-3 bg-rose-500 text-white hover:bg-rose-600 transition-colors;
+  @apply p-3 bg-emerald-600 text-white hover:bg-emerald-700 transition-colors;
 }
 
 /* Modal System */
@@ -751,12 +762,12 @@ button, a, .btn, input, textarea, select {
 }
 
 /* Utility Classes */
-.text-gradient-rose {
-  @apply bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent;
+.text-gradient-emerald {
+  @apply bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent;
 }
 
-.bg-gradient-rose {
-  @apply bg-gradient-to-r from-rose-500 to-pink-500;
+.bg-gradient-emerald {
+  @apply bg-gradient-to-r from-emerald-600 to-teal-600;
 }
 
 .shadow-modern {
@@ -791,16 +802,9 @@ button, a, .btn, input, textarea, select {
 
 .grid-modern-3 {
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
-}/
-* Fix missing utility classes */
-.container-modern {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-.grid-modern {
-  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
-}
-
+/* Fix missing utility classes */
 .shadow-modern {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
@@ -1020,7 +1024,9 @@ button, a, .btn, input, textarea, select {
 
 .avatar-md {
   @apply w-10 h-10 text-base;
-}/* Line cla
+}
+
+/* Line cla
 mp utility */
 .line-clamp-2 {
   overflow: hidden;
@@ -1110,7 +1116,9 @@ mp utility */
 
 [data-theme="dark"] .hover\:bg-gray-100:hover {
   @apply bg-gray-700;
-}/* E
+}
+
+/* E
 nhanced Navbar Responsiveness */
 @media (max-width: 1024px) {
   .nav-link-enhanced {
@@ -1122,7 +1130,7 @@ nhanced Navbar Responsiveness */
   .user-dropdown {
     @apply w-56 right-0;
   }
-  
+
   .mobile-menu-btn {
     @apply p-2.5;
   }
@@ -1132,15 +1140,15 @@ nhanced Navbar Responsiveness */
   nav .max-w-7xl {
     @apply px-3;
   }
-  
+
   .user-menu-btn {
     @apply p-1.5 space-x-1;
   }
-  
+
   .user-avatar {
     @apply w-7 h-7;
   }
-  
+
   .theme-toggle-btn {
     @apply p-2;
   }
@@ -1171,7 +1179,7 @@ nhanced Navbar Responsiveness */
 .theme-toggle-btn:focus,
 .user-menu-btn:focus,
 .mobile-menu-btn:focus {
-  @apply outline-none ring-2 ring-rose-500 ring-offset-2;
+  @apply outline-none ring-2 ring-emerald-500 ring-offset-2;
 }
 
 [data-theme="dark"] .nav-link-enhanced:focus,
@@ -1192,6 +1200,7 @@ nhanced Navbar Responsiveness */
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1202,16 +1211,24 @@ nhanced Navbar Responsiveness */
   animation: slideDown 0.3s ease-out;
 }
 
-.mobile-nav-item:nth-child(1) { animation-delay: 0.1s; }
-.mobile-nav-item:nth-child(2) { animation-delay: 0.2s; }
-.mobile-nav-item:nth-child(3) { animation-delay: 0.3s; }
+.mobile-nav-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.mobile-nav-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.mobile-nav-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
 
 /* Backdrop blur support check */
 @supports (backdrop-filter: blur(8px)) {
   nav {
     @apply bg-white/95;
   }
-  
+
   [data-theme="dark"] nav {
     @apply bg-gray-900/95;
   }
@@ -1221,7 +1238,7 @@ nhanced Navbar Responsiveness */
   nav {
     @apply bg-white;
   }
-  
+
   [data-theme="dark"] nav {
     @apply bg-gray-900;
   }

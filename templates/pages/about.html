@@ -5,7 +5,8 @@
 {% block content %}
 
 <!-- Hero Section -->
-<section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-hidden">
+<section
+    class="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
         <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -17,43 +18,44 @@
             <rect width="100" height="100" fill="url(#about-grid)" />
         </svg>
     </div>
-    
+
     <!-- Floating Elements -->
-    <div class="absolute top-20 left-20 w-32 h-32 bg-rose-500/10 rounded-full blur-xl"></div>
-    <div class="absolute bottom-20 right-20 w-48 h-48 bg-blue-500/10 rounded-full blur-2xl"></div>
-    <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-purple-500/10 rounded-full blur-lg"></div>
-    
+    <div class="absolute top-20 left-20 w-32 h-32 bg-emerald-500/10 rounded-full blur-xl"></div>
+    <div class="absolute bottom-20 right-20 w-48 h-48 bg-teal-500/10 rounded-full blur-2xl"></div>
+    <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-emerald-500/10 rounded-full blur-lg"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div data-aos="fade-up">
-            <div class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-white/10 text-white rounded-full mb-6">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-white/10 text-white rounded-full mb-6">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
                 About RentEasy
             </div>
-            <h1 class="text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight">
-                Your Gateway to
-                <span class="text-gradient bg-gradient-to-r from-rose-400 to-pink-500 bg-clip-text text-transparent">
-                    Unforgettable
+            <h1 class="text-5xl lg:text-7xl font-extrabold text-white mb-8 leading-tight">
+                Crafting
+                <span class="text-gradient bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent">
+                    Exceptional
                 </span>
-                Experiences
+                Stays
             </h1>
             <p class="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-12">
-                We connect travelers with extraordinary accommodations worldwide, making every journey a story worth telling.
+                We connect travelers with extraordinary accommodations worldwide, making every journey a story worth
+                telling.
             </p>
-            
+
             <!-- CTA Buttons -->
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{% url 'listings' %}" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-rose-500 text-white font-semibold rounded-xl hover:bg-rose-600 transition-colors shadow-lg">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
+                <a href="{% url 'listings' %}"
+                    class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-500/20">
+                    <i class="bi bi-search"></i>
                     Explore Properties
                 </a>
-                <a href="#story" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                    </svg>
+                <a href="#story"
+                    class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-all">
+                    <i class="bi bi-info-circle"></i>
                     Our Story
                 </a>
             </div>
@@ -67,9 +69,12 @@
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <!-- Content -->
             <div data-aos="fade-right">
-                <div class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-200 rounded-full mb-6">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-200 rounded-full mb-6">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                        </path>
                     </svg>
                     Our Story
                 </div>
@@ -77,82 +82,97 @@
                     Connecting Travelers with Perfect Stays
                 </h2>
                 <p class="text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                    At RentEasy, we believe that every trip is an opportunity for discovery and making lasting memories. Our mission is to connect travelers with the perfect accommodations that make each journey special, whether it's a city adventure, a beach getaway, or a retreat into nature.
+                    At RentEasy, we believe that every trip is an opportunity for discovery and making lasting memories.
+                    Our mission is to connect travelers with the perfect accommodations that make each journey special,
+                    whether it's a city adventure, a beach getaway, or a retreat into nature.
                 </p>
                 <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                    Founded by passionate travelers who understand the importance of finding the right place to stay, we've built a platform that prioritizes quality, trust, and exceptional experiences.
+                    Founded by passionate travelers who understand the importance of finding the right place to stay,
+                    we've built a platform that prioritizes quality, trust, and exceptional experiences.
                 </p>
-                
+
                 <!-- Key Features -->
                 <div class="space-y-4">
                     <div class="flex items-start space-x-4">
-                        <div class="w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        <div
+                            class="w-8 h-8 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
                             </svg>
                         </div>
                         <div>
                             <h4 class="font-semibold text-gray-900 dark:text-white">Verified Properties</h4>
-                            <p class="text-gray-600 dark:text-gray-400">Every listing is carefully vetted for quality and authenticity</p>
+                            <p class="text-gray-600 dark:text-gray-400">Every listing is carefully vetted for quality
+                                and authenticity</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4">
-                        <div class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg class="w-4 h-4 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        <div
+                            class="w-8 h-8 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
                         <div>
                             <h4 class="font-semibold text-gray-900 dark:text-white">24/7 Support</h4>
-                            <p class="text-gray-600 dark:text-gray-400">Round-the-clock assistance whenever you need help</p>
+                            <p class="text-gray-600 dark:text-gray-400">Round-the-clock assistance whenever you need
+                                help</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4">
-                        <div class="w-8 h-8 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        <div
+                            class="w-8 h-8 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
                         <div>
                             <h4 class="font-semibold text-gray-900 dark:text-white">Secure Booking</h4>
-                            <p class="text-gray-600 dark:text-gray-400">Safe and secure payment processing with full protection</p>
+                            <p class="text-gray-600 dark:text-gray-400">Safe and secure payment processing with full
+                                protection</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Images -->
             <div class="relative" data-aos="fade-left">
                 <div class="grid grid-cols-2 gap-6">
                     <div class="space-y-6">
-                        <img class="w-full rounded-2xl shadow-lg" 
-                            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&auto=format&fit=crop&q=60" 
+                        <img class="w-full rounded-2xl shadow-lg"
+                            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&auto=format&fit=crop&q=60"
                             alt="Modern apartment interior">
-                        <img class="w-full rounded-2xl shadow-lg" 
-                            src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&auto=format&fit=crop&q=60" 
+                        <img class="w-full rounded-2xl shadow-lg"
+                            src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&auto=format&fit=crop&q=60"
                             alt="Luxury villa exterior">
                     </div>
                     <div class="space-y-6 pt-12">
-                        <img class="w-full rounded-2xl shadow-lg" 
-                            src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&auto=format&fit=crop&q=60" 
+                        <img class="w-full rounded-2xl shadow-lg"
+                            src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&auto=format&fit=crop&q=60"
                             alt="Cozy bedroom">
-                        <img class="w-full rounded-2xl shadow-lg" 
-                            src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&auto=format&fit=crop&q=60" 
+                        <img class="w-full rounded-2xl shadow-lg"
+                            src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&auto=format&fit=crop&q=60"
                             alt="Beautiful kitchen">
                     </div>
                 </div>
-                
+
                 <!-- Floating Stats Card -->
-                <div class="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl border border-gray-100 dark:border-gray-700">
+                <div
+                    class="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-100 dark:border-slate-700">
                     <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-rose-100 dark:bg-rose-900 rounded-xl flex items-center justify-center">
-                            <svg class="w-6 h-6 text-rose-600 dark:text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
+                        <div
+                            class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl flex items-center justify-center">
+                            <i class="bi bi-people text-2xl text-emerald-600 dark:text-emerald-400"></i>
                         </div>
                         <div>
-                            <div class="text-2xl font-bold text-gray-900 dark:text-white">1M+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Happy Guests</div>
+                            <div class="text-2xl font-bold text-slate-900 dark:text-white">1M+</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400">Happy Guests</div>
                         </div>
                     </div>
                 </div>
@@ -167,21 +187,28 @@
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <!-- Image -->
             <div class="relative" data-aos="fade-right">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&auto=format&fit=crop&q=60" 
-                    alt="Team collaboration" 
-                    class="w-full rounded-2xl shadow-lg">
-                
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&auto=format&fit=crop&q=60"
+                    alt="Team collaboration" class="w-full rounded-2xl shadow-lg">
+
                 <!-- Floating Element -->
-                <div class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl opacity-20"></div>
-                <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl opacity-20"></div>
+                <div
+                    class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl opacity-20">
+                </div>
+                <div
+                    class="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl opacity-20">
+                </div>
             </div>
-            
+
             <!-- Content -->
             <div data-aos="fade-left">
-                <div class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full mb-6">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full mb-6">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                        </path>
                     </svg>
                     Our Vision
                 </div>
@@ -189,29 +216,36 @@
                     Making Travel Accessible for Everyone
                 </h2>
                 <p class="text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                    To be the most trusted and user-friendly online accommodation platform, where every travel plan starts and ends. We envision a world where exploring the globe is accessible, comfortable, and tailored to every traveler's needs.
+                    To be the most trusted and user-friendly online accommodation platform, where every travel plan
+                    starts and ends. We envision a world where exploring the globe is accessible, comfortable, and
+                    tailored to every traveler's needs.
                 </p>
                 <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                    Our commitment extends beyond just bookings – we're building a community of travelers and hosts who share experiences, create connections, and make the world feel a little smaller and more welcoming.
+                    Our commitment extends beyond just bookings – we're building a community of travelers and hosts who
+                    share experiences, create connections, and make the world feel a little smaller and more welcoming.
                 </p>
-                
+
                 <!-- Values -->
                 <div class="grid grid-cols-2 gap-6">
-                    <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-                        <div class="text-3xl font-bold text-rose-600 dark:text-rose-400 mb-2">Trust</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Building confidence through transparency</div>
+                    <div
+                        class="text-center p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700">
+                        <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2">Trust</div>
+                        <div class="text-sm text-slate-600 dark:text-slate-400">Integrity in every interaction</div>
                     </div>
-                    <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-                        <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">Quality</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Curating exceptional experiences</div>
+                    <div
+                        class="text-center p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700">
+                        <div class="text-3xl font-bold text-teal-600 dark:text-teal-400 mb-2">Quality</div>
+                        <div class="text-sm text-slate-600 dark:text-slate-400">Curating the finest stays</div>
                     </div>
-                    <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-                        <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">Innovation</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Pioneering travel technology</div>
+                    <div
+                        class="text-center p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700">
+                        <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2">Innovation</div>
+                        <div class="text-sm text-slate-600 dark:text-slate-400">Seamless digital features</div>
                     </div>
-                    <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-                        <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">Community</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Connecting people worldwide</div>
+                    <div
+                        class="text-center p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700">
+                        <div class="text-3xl font-bold text-teal-600 dark:text-teal-400 mb-2">Community</div>
+                        <div class="text-sm text-slate-600 dark:text-slate-400">Connecting global souls</div>
                     </div>
                 </div>
             </div>
@@ -230,13 +264,16 @@
                 These numbers represent real people, real experiences, and real memories created through our platform.
             </p>
         </div>
-        
+
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-8" data-aos="fade-up" data-aos-delay="200">
             <!-- Stat 1 -->
             <div class="text-center group">
-                <div class="w-20 h-20 bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div
+                    class="w-20 h-20 bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                        </path>
                     </svg>
                 </div>
                 <div class="text-4xl font-bold text-gray-900 dark:text-white mb-2">1M+</div>
@@ -245,9 +282,12 @@
 
             <!-- Stat 2 -->
             <div class="text-center group">
-                <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div
+                    class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                        </path>
                     </svg>
                 </div>
                 <div class="text-4xl font-bold text-gray-900 dark:text-white mb-2">50K+</div>
@@ -256,9 +296,12 @@
 
             <!-- Stat 3 -->
             <div class="text-center group">
-                <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div
+                    class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                        </path>
                     </svg>
                 </div>
                 <div class="text-4xl font-bold text-gray-900 dark:text-white mb-2">195+</div>
@@ -267,9 +310,12 @@
 
             <!-- Stat 4 -->
             <div class="text-center group">
-                <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div
+                    class="w-20 h-20 bg-gradient-to-br from-purple-500 to-violet-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
+                        </path>
                     </svg>
                 </div>
                 <div class="text-4xl font-bold text-gray-900 dark:text-white mb-2">4.9</div>
@@ -280,7 +326,7 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-20 bg-gradient-to-br from-rose-500 via-rose-600 to-pink-600 relative overflow-hidden">
+<section class="py-24 bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 relative overflow-hidden">
     <!-- Background Elements -->
     <div class="absolute inset-0 opacity-10">
         <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -292,29 +338,26 @@
             <rect width="100" height="100" fill="url(#about-cta-grid)" />
         </svg>
     </div>
-    
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
         <div data-aos="fade-up">
             <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
                 Ready to Start Your Journey?
             </h2>
             <p class="text-xl text-white/90 max-w-3xl mx-auto mb-12 leading-relaxed">
-                Join millions of travelers who trust RentEasy to find their perfect accommodations. Your next adventure is just a click away.
+                Join millions of travelers who trust RentEasy to find their perfect accommodations. Your next adventure
+                is just a click away.
             </p>
-            
+
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{% url 'listings' %}" 
-                    class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-rose-600 font-semibold rounded-xl hover:bg-gray-50 transition-colors shadow-lg">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
+                <a href="{% url 'listings' %}"
+                    class="inline-flex items-center justify-center gap-2 px-10 py-4 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-500/20">
+                    <i class="bi bi-search"></i>
                     Explore Properties
                 </a>
-                <a href="{% url 'register' %}" 
-                    class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-rose-600 transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
-                    </svg>
+                <a href="{% url 'register' %}"
+                    class="inline-flex items-center justify-center gap-2 px-10 py-4 border-2 border-white/20 text-white font-bold rounded-xl hover:bg-white/10 transition-all">
+                    <i class="bi bi-person-plus text-xl"></i>
                     Join Our Community
                 </a>
             </div>

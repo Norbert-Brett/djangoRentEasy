@@ -16,11 +16,29 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
-CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS').split(',')
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', 'http://localhost:8000').split(',')
+
+# Security Settings for Production
+if not DEBUG:
+    # HTTPS Settings
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
+    
+    # HSTS Settings
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    
+    # Proxy Settings (for deployment behind reverse proxy)
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
@@ -43,26 +61,35 @@ INSTALLED_APPS = [
     "hosts",
 
     # 3rd party apps
-    "django_browser_reload",
-    'debug_toolbar',
     'admin_honeypot',
     'cloudinary',
     'cloudinary_storage',
 
 ]
 
+# Development-only apps
+if DEBUG:
+    INSTALLED_APPS += [
+        "django_browser_reload",
+        'debug_toolbar',
+    ]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # For static files in production
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    "django_browser_reload.middleware.BrowserReloadMiddleware",  # browser reload
-    "debug_toolbar.middleware.DebugToolbarMiddleware",  # debug toolbar
 ]
+
+if DEBUG:
+    MIDDLEWARE += [
+        "django_browser_reload.middleware.BrowserReloadMiddleware",
+        "debug_toolbar.middleware.DebugToolbarMiddleware",
+    ]
 
 INTERNAL_IPS = ["127.0.0.1"]
 
@@ -136,16 +163,40 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'djangorenteasy/static')
 ]
 
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+# Static files storage
+if DEBUG:
+    # Development: Use default storage
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+else:
+    # Production: Use WhiteNoise with compression and caching
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Use Cloudinary for media files if configured
+USE_CLOUDINARY = os.getenv('USE_CLOUDINARY', 'False') == 'True'
+
+if USE_CLOUDINARY:
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    # Cloudinary settings
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': os.getenv("CLOUD_NAME"),
+        'API_KEY': os.getenv("API_KEY"),
+        'API_SECRET': os.getenv("API_SECRET"),
+        'SECURE': True,
+        'MEDIA_TAG': 'media',
+        'STATIC_TAG': 'static',
+        'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
+        'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpeg', 'png', 'webp', ],
+    }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -153,6 +204,14 @@ MESSAGE_TAGS = {
     messages.ERROR: 'warning'
 }
 
+# Session Security
+SESSION_COOKIE_AGE = 1209600  # 2 weeks
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+
+# CSRF Security
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SAMESITE = 'Lax'
 
 # Jazzmin settings
 JAZZMIN_SETTINGS = {
@@ -170,23 +229,46 @@ JAZZMIN_SETTINGS = {
 }
 
 # Email settings
-EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = os.getenv('EMAIL_PORT')
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'localhost')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
 
-# Cloudinary settings
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv("CLOUD_NAME"),
-    'API_KEY': os.getenv("API_KEY"),
-    'API_SECRET': os.getenv("API_SECRET"),
-    'SECURE': True,
-    'MEDIA_TAG': 'media',
-    'STATIC_TAG': 'static',
-    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
-    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpeg', 'png', 'webp', ],
-}
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# Logging Configuration for Production
+if not DEBUG:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'verbose': {
+                'format': '{levelname} {asctime} {module} {message}',
+                'style': '{',
+            },
+        },
+        'handlers': {
+            'file': {
+                'level': 'ERROR',
+                'class': 'logging.FileHandler',
+                'filename': os.path.join(BASE_DIR, 'logs/django_errors.log'),
+                'formatter': 'verbose',
+            },
+            'console': {
+                'level': 'INFO',
+                'class': 'logging.StreamHandler',
+                'formatter': 'verbose',
+            },
+        },
+        'root': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+        },
+        'loggers': {
+            'django': {
+                'handlers': ['console', 'file'],
+                'level': 'INFO',
+                'propagate': False,
+            },
+        },
+    }

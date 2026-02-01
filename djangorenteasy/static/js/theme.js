@@ -13,7 +13,7 @@ class ThemeManager {
   setupThemeToggle() {
     const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
     const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-    
+
     if (themeToggleDesktop) {
       themeToggleDesktop.addEventListener('click', () => this.toggleTheme());
     }
@@ -38,6 +38,16 @@ class ThemeManager {
 
   setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
+
+    // Add/remove dark class for Tailwind CSS dark mode
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.body.classList.remove('dark');
+    }
+
     localStorage.setItem('theme', theme);
     this.updateThemeIcon();
     this.announceThemeChange(theme);
@@ -52,10 +62,10 @@ class ThemeManager {
   updateThemeIcon() {
     const currentTheme = this.getCurrentTheme();
     const iconClass = currentTheme === 'dark' ? 'bi-moon-fill' : 'bi-sun-fill';
-    
+
     const themeIconDesktop = document.getElementById('theme-icon-desktop');
     const themeIconMobile = document.getElementById('theme-icon-mobile');
-    
+
     if (themeIconDesktop) {
       themeIconDesktop.className = `bi ${iconClass}`;
     }

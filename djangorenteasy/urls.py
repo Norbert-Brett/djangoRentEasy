@@ -10,6 +10,7 @@ urlpatterns = [
                   path('listings/', include('listings.urls')),
                   path('contacts/', include('contacts.urls')),
                   path('accounts/', include('accounts.urls')),
+                  path('hosts/', include('hosts.urls')),
                   path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
                   path(admin_url, admin.site.urls),
                   path("__reload__/", include("django_browser_reload.urls")),

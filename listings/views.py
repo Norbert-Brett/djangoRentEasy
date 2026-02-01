@@ -149,3 +149,69 @@ def search(request):
 
     # Render the search page with the context
     return render(request, 'listings/search.html', context)
+
+
+# API Views for Save Functionality
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST, require_GET
+from .models import SavedListing
+
+
+@login_required
+@require_POST
+def save_listing(request, listing_id):
+    """Toggle save/unsave for a listing"""
+    try:
+        listing = Listing.objects.get(id=listing_id, is_published=True)
+        saved, created = SavedListing.objects.get_or_create(
+            user=request.user,
+            listing=listing
+        )
+        
+        if not created:
+            # Already saved, so unsave it
+            saved.delete()
+            return JsonResponse({
+                'success': True,
+                'saved': False,
+                'message': 'Removed from saved listings'
+            })
+        else:
+            # Newly saved
+            return JsonResponse({
+                'success': True,
+                'saved': True,
+                'message': 'Added to saved listings!'
+            })
+    except Listing.DoesNotExist:
+        return JsonResponse({
+            'success': False,
+            'error': 'Listing not found'
+        }, status=404)
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+
+
+@login_required
+@require_GET
+def get_saved_status(request, listing_id):
+    """Check if a listing is saved by the current user"""
+    try:
+        is_saved = SavedListing.objects.filter(
+            user=request.user,
+            listing_id=listing_id
+        ).exists()
+        
+        return JsonResponse({
+            'success': True,
+            'saved': is_saved
+        })
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)

@@ -1,8 +1,10 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
 
 
 class Host(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name='host_profile')
     name = models.CharField(max_length=200)
     photo = models.ImageField(upload_to='photos/hosts/')
     description = models.TextField(blank=True)

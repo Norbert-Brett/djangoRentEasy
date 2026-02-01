@@ -75,8 +75,15 @@ def logout(request):
 def dashboard(request):
     # Get all contacts for the current user, ordered by contact date
     user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=request.user.id)
+    
+    # Get saved listings with related listing data
+    from listings.models import SavedListing
+    saved_listings = SavedListing.objects.filter(user=request.user).select_related('listing').order_by('-created_at')
+    saved_count = saved_listings.count()
 
     context = {
         'contacts': user_contacts,
+        'saved_count': saved_count,
+        'saved_listings': saved_listings,
     }
     return render(request, 'accounts/dashboard.html', context)
