@@ -162,10 +162,6 @@
 
   <!-- Footer -->
   {% include 'partials/_footer.html' %}
-  {% if debug %}
-    {% load django_browser_reload %}
-    {% django_browser_reload_script %}
-  {% endif %}
 
   <!-- Scripts -->
   <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
