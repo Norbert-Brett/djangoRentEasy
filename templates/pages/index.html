@@ -322,7 +322,7 @@
                     <div class="relative">
                         <img src="{{ listing.photo_main.url }}" alt="{{ listing.title }}"
                             class="aspect-square w-full object-cover group-hover:scale-105 transition-transform duration-700"
-                            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&auto=format&fit=crop&q=60'">
+                            onerror="this.onerror=null; this.src='https://picsum.photos/seed/index_{{ listing.id }}/800/800'">
 
                         <!-- Wishlist Button -->
                         <button
@@ -331,7 +331,8 @@
                         </button>
 
                         <!-- Category Badge -->
-                        <span class="absolute bottom-3 left-3 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100/90 dark:bg-emerald-900/90 text-emerald-800 dark:text-emerald-200 backdrop-blur-sm">{{ listing.category }}</span>
+                        <span
+                            class="absolute bottom-3 left-3 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100/90 dark:bg-emerald-900/90 text-emerald-800 dark:text-emerald-200 backdrop-blur-sm">{{ listing.category }}</span>
                     </div>
 
                     <!-- Content -->
