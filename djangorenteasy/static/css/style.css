@@ -1,10 +1,5 @@
 /* RentEasy Custom Theme System */
-@import "tailwindcss";
-
-/* Plugins */
-@plugin "@tailwindcss/forms";
-
-@custom-variant dark (&:where(.dark, .dark *));
+/* Note: TailwindCSS is loaded via CDN in base.html */
 
 /* CSS Variables for Theme System */
 :root {
