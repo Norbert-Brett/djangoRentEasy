@@ -360,7 +360,8 @@
             <!-- Image Container -->
             <div class="relative overflow-hidden">
               <img src="{{ listing.photo_main.url }}" alt="{{ listing.title }}"
-                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700">
+                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
+                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&auto=format&fit=crop&q=60'">
 
               <!-- Wishlist Button -->
               <button
@@ -455,7 +456,8 @@
               <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
                 <div class="flex items-center">
                   <img src="{{ listing.host.photo.url }}" alt="{{ listing.host.name }}"
-                    class="w-8 h-8 rounded-full object-cover mr-3">
+                    class="w-8 h-8 rounded-full object-cover mr-3"
+                    onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ listing.host.name|urlencode }}&background=10b981&color=fff'">
                   <div>
                     <p class="text-sm font-medium text-gray-900 dark:text-white">{{ listing.host.name }}</p>
                     <p class="text-xs text-gray-500 dark:text-gray-400">Host</p>
