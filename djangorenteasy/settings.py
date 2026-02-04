@@ -182,7 +182,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # Use Cloudinary for media files if configured
-USE_CLOUDINARY = os.getenv('USE_CLOUDINARY', 'False') == 'True'
+USE_CLOUDINARY = os.getenv('USE_CLOUDINARY', 'True') == 'True'
 
 if USE_CLOUDINARY:
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
