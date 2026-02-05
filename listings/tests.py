@@ -26,7 +26,7 @@ class TestViews(TestCase):
         )
 
     def test_index_GET(self):
-        response = self.client.get(reverse('index'))
+        response = self.client.get(reverse('listings'))
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'listings/listings.html')

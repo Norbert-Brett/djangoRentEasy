@@ -11,7 +11,7 @@ class TestViews(TestCase):
         self.logout_url = reverse('logout')
         self.dashboard_url = reverse('dashboard')
 
-        self.user = User.objects.create_user('testuser1')
+        self.user = User.objects.create_user('testuser1', password='12345')
 
     def test_register_GET(self):
         response = self.client.get(self.register_url)
