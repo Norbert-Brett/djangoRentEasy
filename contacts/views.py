@@ -69,3 +69,4 @@ def contact(request):
         # Show a success message and redirect
         messages.success(request, 'Your request has been submitted, a realtor will get back to you soon')
         return redirect('/listings/' + context['listing_id'])
+    return redirect('index')

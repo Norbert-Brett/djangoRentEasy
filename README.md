@@ -15,7 +15,7 @@ Property Listings Management:** Admins can list properties, and planned features
 ## Technologies Used
 
 - **Frontend:** HTML5, CSS3, TailwindCSS, DaisyUI, JavaScript, AlpineJS
-- **Backend:** Django 4.2.11
+- **Backend:** Django 6.0.2
 - **Database:** PostgreSQL
 - **Hosting/Deployment:** Railway
 - **Version Control:** Git and GitHub
@@ -27,7 +27,7 @@ Property Listings Management:** Admins can list properties, and planned features
 
 Before setting up the project, ensure you have the following installed:
 
-- Python 3.8 or above
+- **Prerequisites:** Python 3.13 or above
 - pip (Python package installer)
 - Git
 

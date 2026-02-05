@@ -169,34 +169,36 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'djangorenteasy/static')
 ]
 
-# Static files storage
+# Storage configuration
 if DEBUG:
-    # Development: Use default storage
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    STATIC_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 else:
-    # Production: Use WhiteNoise with compression and caching
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATIC_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage" if (os.getenv('USE_CLOUDINARY', 'True') == 'True') else "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": STATIC_STORAGE,
+    },
+}
 
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# Use Cloudinary for media files if configured
-USE_CLOUDINARY = os.getenv('USE_CLOUDINARY', 'True') == 'True'
-
-if USE_CLOUDINARY:
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-    # Cloudinary settings
-    CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': os.getenv("CLOUD_NAME"),
-        'API_KEY': os.getenv("API_KEY"),
-        'API_SECRET': os.getenv("API_SECRET"),
-        'SECURE': True,
-        'MEDIA_TAG': 'media',
-        'STATIC_TAG': 'static',
-        'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
-        'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpeg', 'png', 'webp', ],
-    }
+# Cloudinary settings
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv("CLOUD_NAME"),
+    'API_KEY': os.getenv("API_KEY"),
+    'API_SECRET': os.getenv("API_SECRET"),
+    'SECURE': True,
+    'MEDIA_TAG': 'media',
+    'STATIC_TAG': 'static',
+    'STATICFILES_MANIFEST_ROOT': os.path.join(BASE_DIR, 'manifest'),
+    'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpeg', 'png', 'webp', ],
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
