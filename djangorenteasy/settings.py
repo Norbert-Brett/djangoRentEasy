@@ -173,7 +173,7 @@ STATICFILES_DIRS = [
 if DEBUG:
     STATIC_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 else:
-    STATIC_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATIC_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 STORAGES = {
     "default": {
@@ -183,10 +183,6 @@ STORAGES = {
         "BACKEND": STATIC_STORAGE,
     },
 }
-
-# WhiteNoise Settings
-# Set to False to prevent MissingFileError during collectstatic for missing source maps in 3rd party apps
-WHITENOISE_MANIFEST_STRICT = False
 
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
