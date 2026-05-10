@@ -1,0 +1,14 @@
+.git
+.venv
+venv
+__pycache__
+*.pyc
+*.log
+.env
+.vscode
+.idea
+staticfiles
+media
+db.sqlite3
+.python-version
+uv.lock

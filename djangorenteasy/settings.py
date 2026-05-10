@@ -184,6 +184,10 @@ STORAGES = {
     },
 }
 
+# WhiteNoise Settings
+# Set to False to prevent MissingFileError during collectstatic for missing source maps in 3rd party apps
+WHITENOISE_MANIFEST_STRICT = False
+
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
