@@ -5,22 +5,22 @@ asgiref==3.11.1
     #   django
     #   django-browser-reload
     #   djangorenteasy
-certifi==2026.1.4
+certifi==2026.4.22
     # via
     #   cloudinary
     #   djangorenteasy
     #   requests
-charset-normalizer==3.4.4
+charset-normalizer==3.4.7
     # via
     #   djangorenteasy
     #   requests
-cloudinary==1.44.1
+cloudinary==1.44.2
     # via django-cloudinary-storage
 crispy-tailwind==1.0.3
     # via djangorenteasy
-dj-database-url==3.1.0
+dj-database-url==3.1.2
     # via djangorenteasy
-django==6.0.2
+django==6.0.5
     # via
     #   crispy-tailwind
     #   dj-database-url
@@ -36,33 +36,33 @@ django-browser-reload==1.21.0
     # via djangorenteasy
 django-cloudinary-storage==0.3.0
     # via djangorenteasy
-django-crispy-forms==2.5
+django-crispy-forms==2.6
     # via
     #   crispy-tailwind
     #   djangorenteasy
-django-debug-toolbar==6.2.0
+django-debug-toolbar==6.3.0
     # via djangorenteasy
 django-ipware==7.0.1
     # via django-admin-honeypot-updated-2021
-django-jazzmin==3.0.1
+django-jazzmin==3.0.4
     # via djangorenteasy
-gunicorn==25.0.1
+gunicorn==26.0.0
     # via djangorenteasy
-idna==3.11
+idna==3.13
     # via
     #   djangorenteasy
     #   requests
-packaging==26.0
+packaging==26.2
     # via gunicorn
-pillow==12.1.0
+pillow==12.2.0
     # via djangorenteasy
-psycopg2-binary==2.9.11
+psycopg2-binary==2.9.12
     # via djangorenteasy
-python-dotenv==1.2.1
+python-dotenv==1.2.2
     # via djangorenteasy
 python-ipware==3.0.0
     # via django-ipware
-requests==2.32.5
+requests==2.33.1
     # via
     #   django-cloudinary-storage
     #   djangorenteasy
@@ -73,12 +73,12 @@ sqlparse==0.5.5
     #   django
     #   django-debug-toolbar
     #   djangorenteasy
-tzdata==2025.3 ; sys_platform == 'win32'
+tzdata==2026.2 ; sys_platform == 'win32'
     # via django
-urllib3==2.6.3
+urllib3==2.7.0
     # via
     #   cloudinary
     #   djangorenteasy
     #   requests
-whitenoise==6.11.0
+whitenoise==6.12.0
     # via djangorenteasy
