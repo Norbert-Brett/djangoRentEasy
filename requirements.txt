@@ -48,7 +48,7 @@ idna==3.13
     # via requests
 packaging==26.2
     # via gunicorn
-pillow==12.3.0
+pillow==13.0.0
     # via -r requirements.in
 psycopg2-binary==2.9.12
     # via -r requirements.in
